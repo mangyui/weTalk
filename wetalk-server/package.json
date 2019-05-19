@@ -1,0 +1,21 @@
+{
+  "name": "wetalk-server",
+  "version": "1.0.0",
+  "description": "we talk server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "nodemon build/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "express": "^4.17.0",
+    "typescript": "^3.4.5",
+    "ws": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^6.0.1",
+    "nodemon": "^1.19.0"
+  }
+}

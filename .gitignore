@@ -1,0 +1,9 @@
+## server
+/wetalk-server/node_modules
+/wetalk-server/package-lock.json
+/wetalk-server/yarn.lock
+
+## client
+/wetalk-client/dist
+/wetalk-client/node_modules
+/wetalk-client/package-lock.json
