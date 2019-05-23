@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router/'
 import store from './store/'
 import './plugins/museui.js'
-
 import '@/styles/index.less'
+import './guard.ts'
+// const Toast = require('muse-ui-toast')
 
 Vue.config.productionTip = false
+// Vue.use(Toast)
 
 new Vue({
   // el: '#app',

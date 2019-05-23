@@ -8,9 +8,12 @@ var WebSocket = require('ws');
 var wss = new WebSocket.Server({ port: 9615 });
 // Broadcast to all.
 var broadcast = function (data) {
+    // console.log('ccc', wss.clients.size);
+    var dataJson = JSON.parse(data);
+    dataJson.number = wss.clients.size;
     wss.clients.forEach(function (client) {
         if (client.readyState === WebSocket.OPEN) {
-            client.send(data);
+            client.send(JSON.stringify(dataJson));
         }
     });
 };

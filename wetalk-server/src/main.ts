@@ -8,9 +8,12 @@ const WebSocket = require('ws')
 const wss = new WebSocket.Server({ port: 9615 });
 // Broadcast to all.
 const broadcast = (data: string) => {
+	console.log('ccc', wss.clients.size)
+	var dataJson = JSON.parse(data)
+	dataJson.number = wss.clients.size
 	wss.clients.forEach((client: any) => {
 		if (client.readyState === WebSocket.OPEN) {
-			client.send(data);
+			client.send(dataJson);
 		}
 	});
 };

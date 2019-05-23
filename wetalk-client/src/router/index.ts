@@ -7,19 +7,35 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+      path: '',
+      component: () => import('@/views/Home.vue'),
+      redirect: '/home/lobby'
     },
     {
-      path: '/multiplayer',
-      name: 'multiplayer',
-      component: () => import(/* webpackChunkName: "about" */ '@/views/Multiplayer.vue')
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/Home.vue'),
+      children: [
+        {
+          path: 'lobby',
+          name: 'Lobby',
+          component: () => import('@/components/Lobby.vue')
+        },
+        {
+          path: 'usercenter',
+          name: 'UserCenter',
+          component: () => import('@/components/UserCenter.vue')
+        }
+      ]
     },
     {
       path: '/WorldRoom',
       name: 'WorldRoom',
-      component: () => import(/* webpackChunkName: "about" */ '@/views/WorldRoom.vue')
+      component: () => import('@/views/WorldRoom.vue')
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
