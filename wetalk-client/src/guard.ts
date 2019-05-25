@@ -2,7 +2,7 @@ import router from './router'
 import store from './store'
 import User from './model/user'
 import Person from './assets/js/person'
-let persons : Person[] = require('./assets/js/persons') // no const!
+let persons : Person[] = require('./assets/js/persons').persons // no const!
 // const whiteList = ['/login',
 //   '/'
 // ] // 不重定向白名单
