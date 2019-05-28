@@ -21,7 +21,7 @@ import {
   // ExpansionPanel,
   // Form,
   Grid,
-  // GridList,
+  GridList,
   // Helpers,
   Icon,
   List,
@@ -67,7 +67,7 @@ Vue.use(Button)
 // Vue.use(ExpansionPanel)
 // Vue.use(Form)
 Vue.use(Grid)
-// Vue.use(GridList)
+Vue.use(GridList)
 // Vue.use(Helpers)
 Vue.use(Icon)
 Vue.use(List)

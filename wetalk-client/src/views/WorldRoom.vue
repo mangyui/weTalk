@@ -31,7 +31,14 @@
               </mu-avatar>
               <div class="mess-item-right">
                 <span>{{user.name}}</span>
-                <p class="mess-item-content">{{item.content}}</p>
+                <mu-menu cover placement="bottom-end">
+                  <p class="mess-item-content">{{item.content}}</p>
+                  <mu-list slot="content">
+                    <mu-list-item button @click="backMess(index)">
+                      <mu-list-item-title>撤销</mu-list-item-title>
+                    </mu-list-item>
+                  </mu-list>
+                </mu-menu>
                 <p class="mess-item-time">{{item.time}}</p>
               </div>
             </div>
@@ -83,13 +90,18 @@ export default class WorldRoom extends Vue {
       var resData = JSON.parse(e.data)
       // console.log(message.user, this.user, message.user === this.user)
       // this.mesgLists.push({ message })
-      this.$store.commit('addMsg', resData.message)
+      console.log('resData', resData)
+      if (resData.isRemove) {
+        this.$store.commit('removeMsg', resData.message)
+      } else {
+        this.$store.commit('addMsg', resData.message)
+      }
+
       if (resData.message.type === -1) {
         this.number = (resData.number - 1) + ''
       } else {
         this.number = resData.number + ''
       }
-      // console.log(this.msgList)
       this.$nextTick(() => {
         try {
           const msgEl = document.querySelector('.mess-list .list-item:last-child')
@@ -101,6 +113,17 @@ export default class WorldRoom extends Vue {
         }
       })
     }
+  }
+  backMess (index: number) {
+    this.backoutMess(this.msgList[index])
+  }
+  backoutMess (message: Message) {
+    console.log('Message', Message)
+    var data = {
+      message: message,
+      isRemove: true
+    }
+    this.ws.send(JSON.stringify(data))
   }
   creatSending (content: string, type: number) {
     var time = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
@@ -171,6 +194,7 @@ export default class WorldRoom extends Vue {
         text-overflow: ellipsis;
         white-space: nowrap;
         display: block;
+        font-size: 13px;
       }
       p.mess-item-content{
         margin: 0;
@@ -205,6 +229,9 @@ export default class WorldRoom extends Vue {
     padding-left: 40px;
     padding-right: 0px;
     .mess-item-right{
+      .mu-menu{
+        display: block;
+      }
       span{
         text-align: right
       }
@@ -213,7 +240,7 @@ export default class WorldRoom extends Vue {
         color: #fff;
         &:after{
           right: unset;
-          left: 100%;
+          left: calc(100% - 0.5px);
           border-color: transparent transparent transparent #2196f3;
         }
       }

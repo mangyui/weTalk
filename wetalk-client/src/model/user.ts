@@ -1,5 +1,5 @@
 class User {
-  private id: string // 当前以时间为id
+  public id: string // 当前以时间为id
   public name: string = ''
   public sex: string = ''
   private avatar : string
@@ -11,6 +11,9 @@ class User {
     if (this.name === '') {
       this.name = '游客'
     }
+  }
+  getUserId (): string {
+    return this.id
   }
 }
 
