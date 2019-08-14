@@ -80,7 +80,7 @@ export default class WorldRoom extends Vue {
   private user: User = this.$store.getters.user
   private msgList: Message[] = this.$store.getters.msgList
   public createWebsocket () {
-    this.ws = new WebSocket('ws://mccyu.com:9615')
+    this.ws = new WebSocket('ws://' + window.location.host)
     this.ws.onopen = (e: any) => {
       // console.log('connection established')
       this.creatSending(this.user.name + ' 进入聊天室', 0)

@@ -5,10 +5,16 @@ var app = express();
 app.use(express.static('public'));
 var port = 9612;
 var WebSocket = require('ws');
-var wss = new WebSocket.Server({ port: 9615 });
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+var server = app.listen(port, '0.0.0.0', function () {
+    console.log('Example app listening on port ' + port);
+});
+var wss = new WebSocket.Server({ server: server });
 // Broadcast to all.
 var broadcast = function (data) {
-    // console.log('ccc', wss.clients.size);
+    console.log('ccc', wss.clients.size);
     var dataJson = JSON.parse(data);
     dataJson.number = wss.clients.size;
     wss.clients.forEach(function (client) {
@@ -18,7 +24,7 @@ var broadcast = function (data) {
     });
 };
 wss.on('connection', function (ws) {
-    console.log('connection established');
+    console.log(new Date().toUTCString() + ' - connection established');
     ws.on('message', function (data) {
         broadcast(data);
     });
@@ -33,10 +39,4 @@ wss.on('connection', function (ws) {
 wss.on('error', function (err) {
     console.log('error');
     console.log(err);
-});
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
-app.listen(port, function () {
-    console.log('Example app listening on port ' + port);
 });
