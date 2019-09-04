@@ -1,90 +1,99 @@
 <template>
   <div class="usercenter">
-    <div class="avatar-box" :style="{backgroundImage:'url(' + require('@/assets/img/user_bg' + bgindex+ '.svg')+')'}">
-      <mu-avatar :size="75" color="#00bcd4">
-        <img :src="user.avatar">
-      </mu-avatar>
-      <mu-button icon large  color="#eee" @click="refreshUser">
-        <mu-icon value="refresh"></mu-icon>
-      </mu-button>
+    <div class="user-bg">
+      <div class="bg-mask" :style="{backgroundImage: 'url('+user.avatar+')'}"></div>
+      <div class="top-mask"></div>
+      <van-icon class="edit-btn" name="edit" size="26px" @click="$router.push('/UserEdit')"></van-icon>
+      <van-icon class="re-btn" name="replay" size="26px" @click="refreshUser"></van-icon>
     </div>
-    <div class="info">
-      <div class="info-item">
-        <span>昵称：</span>
-        <mu-text-field v-model="user.name" :max-length="10"></mu-text-field>
+    <div class="user-box max1100">
+      <img :src="user.avatar">
+      <div>
+        <b>{{user.name}}</b>
+        <p>{{user.sex==1?'男':'女'}} &nbsp;&nbsp;{{user.province}}&nbsp;&nbsp; {{user.city}}</p>
       </div>
-      <div  class="info-item">
-        <span>性别：</span>
-        <mu-flex class="select-control-row">
-          <mu-radio v-model="user.sex" value="男" label="男"></mu-radio>
-          <mu-radio v-model="user.sex" value="女" label="女"></mu-radio>
-        </mu-flex>
-      </div>
-      <!-- <div  class="info-item">
-        <span>序号：</span>
-        <p>{{user.id}}</p>
-      </div> -->
+    </div>
+    <div class="my-info">
+
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import User from '../model/user'
-import Person from '@/assets/js/person'
-let persons : Person[] = require('@/assets/js/persons').persons
+import User from '@/model/user'
+import Person from '@/util/Person'
+let persons : Person[] = require('@/util/Persons').persons
 
 @Component
 export default class UserCenter extends Vue {
   private user: User = this.$store.getters.user
-  private bgindex: number = Math.floor(Math.random() * 6)
   refreshUser () {
-    this.bgindex = Math.floor(Math.random() * 6)
     var index = Math.floor(Math.random() * persons.length)
     this.$store.commit('updateUserAvatar', persons[index].avatar)
     this.$store.commit('updateUserName', persons[index].name)
   }
-  beforeDestroy () {
-    this.$store.commit('initUserInfo', this.user)
-  }
 }
 </script>
 
-<style scoped lang="less">
-.avatar-box{
-  padding: 45px 5px;
-  background: #222;
+<style lang="less" scoped>
+.user-bg{
+  width: 100%;
+  height: 150px;
   position: relative;
-  // background-image: url('../assets/img/user_bg0.svg')
-  .mu-avatar{
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
-  }
-  .mu-button{
+  overflow: hidden;
+  .edit-btn{
     position: absolute;
-    right: 0;
-    bottom: 0;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    z-index: 20;
   }
 }
-.info{
-  background: #fff;
+.bg-mask{
+  position: absolute;
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  max-width: 768px;
-  margin: 15px auto;
-  padding: 15px 5px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-  .info-item{
-    display: flex;
-    padding: 10px 5px;
-    align-items: center;
-    span{
-      width: 30%;
-      color: #777;
-    }
-    p,.mu-input{
-      margin: 0;
-      width: auto;
-      flex-grow: 1;
-    }
+  height: 100%;
+  filter: blur(20px);
+  z-index: 10;
+}
+.top-mask{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 11;
+}
+.user-box{
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 20;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    margin-right: 20px;
+    border: 1px solid #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  }
+  >div{
+    text-align: left;
+  }
+  b{
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.2em;
+  }
+  p{
+    margin: 10px 0;
+    font-size: 0.8em;
+    color: #666;
+    text-align: left;
   }
 }
 </style>

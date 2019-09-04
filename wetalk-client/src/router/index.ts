@@ -8,13 +8,13 @@ export default new Router({
   routes: [
     {
       path: '',
-      component: () => import('@/views/Home.vue'),
       redirect: '/home/lobby'
     },
     {
       path: '/home',
       name: 'home',
       component: () => import('@/views/Home.vue'),
+      redirect: '/home/lobby',
       children: [
         {
           path: 'lobby',
@@ -32,6 +32,11 @@ export default new Router({
       path: '/WorldRoom',
       name: 'WorldRoom',
       component: () => import('@/views/WorldRoom.vue')
+    },
+    {
+      path: '/UserEdit',
+      name: 'UserEdit',
+      component: () => import('@/views/UserEdit.vue')
     },
     {
       path: '*',

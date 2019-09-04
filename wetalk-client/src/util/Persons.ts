@@ -1,5 +1,5 @@
 
-import Person from './person'
+import Person from './Person'
 
 export const persons : Person[] = [
   new Person('瑶', 'https://game.gtimg.cn/images/yxzj/img201606/heroimg/505/505.jpg'),

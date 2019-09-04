@@ -1,8 +1,9 @@
 import router from './router'
 import store from './store'
 import User from './model/user'
-import Person from './assets/js/person'
-let persons : Person[] = require('./assets/js/persons').persons //
+import Person from '@/util/Person'
+import { Route } from 'vue-router/types/router'
+let persons : Person[] = require('@/util/Persons').persons //
 // const whiteList = ['/login',
 //   '/'
 // ] // 不重定向白名单
@@ -14,7 +15,7 @@ router.beforeEach((to, from, next) => {
     // console.log('id', store.getters.user)
     var date = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/[T:-]/g, '').replace(/\.[\d]{3}Z/, '')
     var index = Math.floor(Math.random() * persons.length)
-    var user = new User(date.substring(2) + index, persons[index].name, persons[index].avatar, '男')
+    var user = new User(date.substring(2) + index, persons[index].name, persons[index].avatar, 1)
     store.commit('initUserInfo', user)
 
     next()
@@ -26,4 +27,10 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+router.afterEach((to: Route, from: Route) => {
+  setTimeout(() => {
+    window.scrollTo(0, 0)
+  }, 0)
 })

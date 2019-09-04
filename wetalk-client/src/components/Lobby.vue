@@ -1,64 +1,29 @@
 <template>
   <div>
-    <mu-paper :z-depth="0" class="">
-      <mu-appbar :z-depth="0" color="lightBlue400">
-        <mu-button icon slot="left">
-          <mu-icon value="menu"></mu-icon>
-        </mu-button>
-        大厅
-        <mu-button icon slot="right">
-          <mu-icon value="add"></mu-icon>
-        </mu-button>
-      </mu-appbar>
-      <mu-list>
-        <router-link to="/WorldRoom">
-          <mu-list-item avatar button :ripple="false">
-            <mu-list-item-action>
-              <mu-avatar color="#2196f3">
-                <mu-icon value="public"></mu-icon>
-              </mu-avatar>
-            </mu-list-item-action>
-            <mu-list-item-title>世界聊天室</mu-list-item-title>
-            <mu-list-item-action>
-              <mu-icon value="chat_bubble" color="#2196f3"></mu-icon>
-            </mu-list-item-action>
-          </mu-list-item>
-        </router-link>
-        <mu-list-item avatar button :ripple="false">
-          <mu-list-item-action>
-            <mu-avatar color="#2196f3">
-              <mu-icon value="group_add"></mu-icon>
-            </mu-avatar>
-          </mu-list-item-action>
-          <mu-list-item-title>多人聊天室</mu-list-item-title>
-          <mu-list-item-action>
-            <mu-icon value="speaker_notes_off"></mu-icon>
-          </mu-list-item-action>
-        </mu-list-item>
-        <mu-list-item avatar button :ripple="false">
-          <mu-list-item-action>
-            <mu-avatar color="#2196f3">
-              <mu-icon value="people"></mu-icon>
-            </mu-avatar>
-          </mu-list-item-action>
-          <mu-list-item-title>双人聊天室</mu-list-item-title>
-          <mu-list-item-action>
-            <mu-icon value="speaker_notes_off"></mu-icon>
-          </mu-list-item-action>
-        </mu-list-item>
-        <mu-list-item avatar button :ripple="false">
-          <mu-list-item-action>
-            <mu-avatar color="#2196f3">
-              <mu-icon value="person"></mu-icon>
-            </mu-avatar>
-          </mu-list-item-action>
-          <mu-list-item-title>自言自语室</mu-list-item-title>
-          <mu-list-item-action>
-            <mu-icon value="speaker_notes_off"></mu-icon>
-          </mu-list-item-action>
-        </mu-list-item>
-      </mu-list>
-    </mu-paper>
+    <van-nav-bar title="大厅" fixed>
+      <van-icon name="plus" size="20px" slot="right" />
+    </van-nav-bar>
+    <div class="max1100 content-wrap roomList">
+      <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
+        <div style="margin: 0 8px;">
+          <van-search placeholder="请输入搜索关键词" v-model="searchText" />
+        </div>
+        <div class="room-card" >
+          <router-link to="/WorldRoom">
+            <p>世界聊天室</p>
+            <b>13人</b>
+          </router-link>
+          <img :src="require('@/assets/img/katong2.png')" alt="">
+        </div>
+        <div :class="index%2==0?'room-card liblue':'room-card lired'" v-for="(item,index) in 4" :key="index">
+          <router-link to="/WorldRoom">
+            <p>聊天室{{index}}</p>
+            <b>{{10+index}}人</b>
+          </router-link>
+          <img :src="require('@/assets/img/katong'+index%2+'.png')" alt="">
+        </div>
+      </van-pull-refresh>
+    </div>
   </div>
 </template>
 
@@ -67,12 +32,62 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Lobby extends Vue {
+  searchText: string = ''
+  isLoading: boolean = false
+  $toast: any = this.$toast
+  onRefresh () {
+    setTimeout(() => {
+      // 该组件库自己挂载的 无需自己挂载
+      // eslint-disable-next-line
+      console.log(this)
+      this.$toast('刷新成功')
+      this.isLoading = false
+    }, 1000)
+  }
 }
 </script>
 
 <style lang="less" scoped>
-.mu-list{
-  background: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+.roomList{
+  padding: 1px 0 40px;
+  .room-card{
+    height: 100px;
+    border-radius: 3px 10px 2px 10px;
+    margin: 20px;
+    padding: 15px;
+    background: linear-gradient(-45deg,#261b45,#5843a0);
+    box-shadow: 0 0 24px rgba(0,0,0,0.18);
+    position: relative;
+    p{
+      color: #fefefe;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    b{
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      font-size: 13px;
+      color: #efefef;
+    }
+    img{
+      position: absolute;
+      right: 24px;
+      bottom: 0px;
+      height: 110%;
+      width: auto;
+      transition: 0.28s;
+      &:hover{
+        bottom: 5px
+      }
+    }
+  }
+  .liblue{
+    background: linear-gradient(-45deg,#5460f1,#5bc5ff);
+  }
+  .lired{
+    background: linear-gradient(-45deg,#e25778,#fd8783);
+  }
 }
 </style>

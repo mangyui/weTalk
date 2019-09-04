@@ -1,35 +1,60 @@
-.mu-appbar-title{
-    font-size: 18px;
-  }
-.mu-appbar{
-  height: 50px;
-}
-.mu-paper-round{
-  position: fixed;
+body, html {
   width: 100%;
   height: 100%;
 }
-.mu-bottom-nav{
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  border-top: 1px solid #ededed;
-  .mu-bottom-item{
-    max-width: inherit;
-  }
+
+*{
+  margin: 0;
+  padding: 0;
 }
+p{
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: #2c3e50;
+}
+ul{
+  list-style: none;
+}
+.max1100{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.content-wrap{
+  margin-top: 46px;
+}
+
 .select-control-row{
   .mu-radio-label{
     margin-right: 30px;
   }
 }
 
-.mu-input{
-  .mu-text-field-input{
-    padding-left: 10px;
+#app,.home,.usercenter{
+  height: 100%;
+}
+.bgMax{
+  height: 100%;
+  background: #f9f9f9;
+  padding-top: 46px;
+  box-sizing: border-box;
+}
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
   }
 }
-
 .barBadge{
   margin-right: 15px;
   margin-top: 5px;
@@ -38,4 +63,189 @@
     height: 21px;
     top: -6px;
   } 
+}
+
+
+.about{
+  .mu-bottom-nav-shift-wrapper{
+    justify-content: space-around;
+  }
+  .mu-paper-round{
+    height: calc(100% - 56px);
+  }
+}
+
+.talk-room{
+  .mu-paper-round{
+    background: #fafafa;
+  }
+  .mess-box{
+    text-align: left;
+    padding: 0 10px 55px;
+    height: calc(100% - 37px);
+    overflow: auto;
+    .mess-system{
+      text-align: center;
+      margin: 9px 0;
+      font-size: 12px;
+      color: #aaa;
+    }
+    .mess-item,.mess-item-me{
+      display: flex;
+      align-items: top;
+      padding-right: 40px;
+      margin: 10px 0;
+      .mu-avatar{
+        height: 50px;
+        width: 50px;
+        position: relative;
+        img{
+          width: 100%;
+          border-radius: 8px;
+        }
+        .icon-sex{
+          position: absolute;
+          right: -4px;
+          bottom: -8px;
+          width: 20px;
+          border-radius: 50%;
+          background: #fff;
+          height: 20px;
+        }
+      }
+      .mess-item-right{
+        margin-left: 15px;
+        margin-right: 15px;
+        flex-grow: 1;
+        width: 0;
+        span{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: block;
+          font-size: 13px;
+        }
+        p.mess-item-content{
+          margin: 0;
+          font-size: 14px;
+          padding: 10px 14px;
+          background: #fff;
+          border-radius: 3px;
+          box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+          position: relative;
+          &::after{
+            display: block;
+            content: '';
+            border: 7px solid;
+            border-width: 5px 7px;
+            position: absolute;
+            top: 2px;
+            right: 100%;
+            border-color: transparent #fff transparent transparent;
+          }
+        }
+        p.mess-item-time{
+          margin: 0;
+          text-align: right;
+          font-size: 12px;
+          color: #777;
+          letter-spacing: 0.8px;
+        }
+      }
+    }
+    .mess-item-me{
+      flex-direction: row-reverse;
+      padding-left: 40px;
+      padding-right: 0px;
+      .mess-item-right{
+        .mu-menu{
+          display: block;
+        }
+        span{
+          text-align: right
+        }
+        p.mess-item-content{
+          background: #2196f3;
+          color: #fff;
+          &:after{
+            right: unset;
+            left: calc(100% - 0.5px);
+            border-color: transparent transparent transparent #2196f3;
+          }
+        }
+        p.mess-item-time{
+          text-align: left
+        }
+      }
+    }
+  }
+  .talk-room{
+    .mu-paper-round{
+      height: calc(100% - 56px);
+    }
+  }
+  .talk-bottom{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .talk-send{
+      display: flex;
+      padding: 5px 10px;
+      align-items: center;
+      background: #f9f9f9;
+      box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
+      textarea{
+        flex-grow: 1;
+        min-height: 36px;
+        max-height: 240px;
+        border: 1px solid #fefefe;
+        border-radius: 2px;
+        margin-right: 5px;
+      }
+      .van-icon-smile-o{
+        margin: 0 5px;
+      }
+      .van-button{
+        height: 38px;
+        line-height: 36px;
+      }
+    }
+  }
+}
+
+.usercenter{
+  .user-bg{
+    position: relative;
+    // background-image: url('../assets/img/user_bg0.svg')
+    .re-btn{
+      position: absolute;
+      right: 15px;
+      bottom: 10px;
+      z-index: 99;
+      color: #f44;
+    }
+  }
+  .my-info{
+    margin-top: 20px;
+    .van-cell-group{
+      margin-bottom: 15px;
+      .van-cell{
+        padding: 13px 16px;
+      }
+    }
+  }
+}
+
+.my-edit{
+  padding-top: 5px;
+  .van-cell-group{
+    margin: 15px 0;
+    .van-cell{
+      padding: 13px 16px;
+    }
+  }
+}
+
+.van-tabbar-item__icon .van-icon{
+  font-size: 24px;
 }
