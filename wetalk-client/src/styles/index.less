@@ -1,3 +1,5 @@
+@import './minUI.less';
+
 body, html {
   width: 100%;
   height: 100%;
@@ -31,8 +33,11 @@ ul{
   }
 }
 
-#app,.home,.usercenter{
+#app,.home,.usercenter,.height100{
   height: 100%;
+}
+.borderBox{
+  box-sizing: border-box;
 }
 .bgMax{
   height: 100%;
@@ -65,6 +70,34 @@ ul{
   } 
 }
 
+.litheme{
+  background: linear-gradient(to left,#382961,#5843a0)!important;
+  color: #fff;
+  .van-nav-bar__title{
+    color: #fff;
+  }
+}
+.liblue{
+  background: linear-gradient(-45deg,#5460f1,#5bc5ff)!important;
+}
+.lired{
+  background: linear-gradient(-45deg,#e25778,#fd8783)!important;
+}
+
+.max-btn{
+  display: block;
+  width: 90%;
+  margin:  0 auto;
+}
+
+.my-nav-bar{
+  z-index: 99!important;
+  background: transparent;
+  .van-nav-bar__text, .van-nav-bar__title,.van-icon{
+    color: #fff;
+  }
+
+}
 
 .about{
   .mu-bottom-nav-shift-wrapper{
@@ -227,25 +260,9 @@ ul{
   }
   .my-info{
     margin-top: 20px;
-    .van-cell-group{
-      margin-bottom: 15px;
-      .van-cell{
-        padding: 13px 16px;
-      }
-    }
   }
 }
 
 .my-edit{
   padding-top: 5px;
-  .van-cell-group{
-    margin: 15px 0;
-    .van-cell{
-      padding: 13px 16px;
-    }
-  }
-}
-
-.van-tabbar-item__icon .van-icon{
-  font-size: 24px;
 }

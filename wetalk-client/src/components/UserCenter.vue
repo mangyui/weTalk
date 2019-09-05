@@ -1,20 +1,32 @@
 <template>
-  <div class="usercenter">
-    <div class="user-bg">
-      <div class="bg-mask" :style="{backgroundImage: 'url('+user.avatar+')'}"></div>
-      <div class="top-mask"></div>
-      <van-icon class="edit-btn" name="edit" size="26px" @click="$router.push('/UserEdit')"></van-icon>
-      <van-icon class="re-btn" name="replay" size="26px" @click="refreshUser"></van-icon>
-    </div>
-    <div class="user-box max1100">
+  <div class="find-wrap borderBox height100">
+    <van-nav-bar class="litheme" fixed title="我的" :border="false"  @click-right="$router.push('/setting')">
+      <van-icon name="setting-o" slot="right" size="19px" color="#ddd"/>
+    </van-nav-bar>
+    <div class="find-user max1100 litheme" @click="$router.push('/userhomepage')">
       <img :src="user.avatar">
       <div>
-        <b>{{user.name}}</b>
-        <p>{{user.sex==1?'男':'女'}} &nbsp;&nbsp;{{user.province}}&nbsp;&nbsp; {{user.city}}</p>
+        <p>{{user.name}}<img class="icon-sex"  :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')"></p>
+        <span>{{user.profile || '这个人超级懒，什么都没留下'}}</span>
+        <van-icon class="me-icon" name="arrow" />
       </div>
     </div>
-    <div class="my-info">
-
+    <div class="my-info max1100">
+      <van-cell-group title="">
+        <van-cell title="动态" is-link icon="/icons/星星.svg" />
+      </van-cell-group>
+      <van-cell-group title="">
+        <van-cell title="天气" is-link value="小雨" icon="/icons/天气.svg" />
+      </van-cell-group>
+      <van-cell-group title="">
+        <van-cell title="听一听" is-link icon="/icons/音乐.svg"/>
+        <van-cell title="玩一玩" is-link icon="/icons/游戏.svg"/>
+        <van-cell title="用一用" is-link icon="/icons/表情.svg"/>
+      </van-cell-group>
+      <van-cell-group title="">
+        <van-cell title="通知" is-link icon="/icons/通知.svg" />
+        <van-cell title="事务" is-link icon="/icons/列表.svg" />
+      </van-cell-group>
     </div>
   </div>
 </template>
@@ -22,78 +34,56 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import User from '@/model/user'
-import Person from '@/util/Person'
-let persons : Person[] = require('@/util/Persons').persons
 
 @Component
 export default class UserCenter extends Vue {
   private user: User = this.$store.getters.user
-  refreshUser () {
-    var index = Math.floor(Math.random() * persons.length)
-    this.$store.commit('updateUserAvatar', persons[index].avatar)
-    this.$store.commit('updateUserName', persons[index].name)
-  }
 }
 </script>
 
 <style lang="less" scoped>
-.user-bg{
-  width: 100%;
-  height: 150px;
-  position: relative;
-  overflow: hidden;
-  .edit-btn{
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: #fff;
-    z-index: 20;
-  }
+.find-wrap{
+  background: #f9f9f9;
+  padding-top: 46px;
 }
-.bg-mask{
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  filter: blur(20px);
-  z-index: 10;
-}
-.top-mask{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.45);
-  z-index: 11;
-}
-.user-box{
+.find-user{
   display: flex;
   align-items: center;
-  padding: 0 15px;
-  margin-top: -50px;
+  padding: 15px;
   position: relative;
-  z-index: 20;
-  img {
-    width: 100px;
-    height: 100px;
+  background: #fff;
+  >img {
+    width: 80px;
+    height: 80px;
     border-radius: 4px;
     margin-right: 20px;
     border: 1px solid #fff;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
   }
-  >div{
-    text-align: left;
-  }
-  b{
-    font-weight: bold;
-    color: #fff;
-    font-size: 1.2em;
+  .me-icon{
+    position: absolute;
+    right: 15px;
+    bottom: 50%;
+    transform: translateY(50%);
+    color: #999;
   }
   p{
-    margin: 10px 0;
-    font-size: 0.8em;
-    color: #666;
-    text-align: left;
+    font-size: 1.1em;
+    margin-bottom: 2px;
+    color: #fefefe;
+    img{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-left: 5px;
+      margin-bottom: 5px;
+      background: #fefefe;
+      vertical-align: middle;
+    }
+  }
+  span{
+    font-size: 12px;
+    color: #999;
   }
 }
 </style>

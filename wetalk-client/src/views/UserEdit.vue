@@ -1,6 +1,8 @@
 <template>
   <div class="bgMax">
-    <van-nav-bar fixed title="修改资料" left-text="返回" left-arrow  @click-left="$router.go(-1)"></van-nav-bar>
+    <van-nav-bar fixed title="编辑资料" left-arrow  right-text="保存"
+      @click-left="$router.go(-1)"
+      @click-right="$store.commit('initUserInfo', this.user)"></van-nav-bar>
     <div class="my-edit">
       <van-cell-group>
         <van-field
@@ -15,16 +17,19 @@
           @click="showSex = true"
         />
       </van-cell-group>
-      <van-cell-group @click="showArea=true">
+      <van-cell-group>
+        <van-cell title="定位" is-link  @click="getCity"/>
         <van-field
           v-model="user.province"
           label="省份"
           placeholder="请填写省份"
+           @click="showArea=true"
         />
         <van-field
           v-model="user.city"
           label="城市"
           placeholder="请填写城市"
+           @click="showArea=true"
         />
       </van-cell-group>
       <van-cell-group>
@@ -67,6 +72,7 @@ export default class UserEdit extends Vue {
   areaList: JSON = areaList
   showSex: boolean = false
   showArea: boolean = false
+  $toast: any = this.$toast
   beforeDestroy () {
     this.$store.commit('initUserInfo', this.user)
   }
@@ -79,6 +85,25 @@ export default class UserEdit extends Vue {
     this.user.city = value[1].name
     this.user.cityCode = value[1].code
     this.showArea = false
+  }
+  getCity () {
+    this.$toast.loading({
+      mask: true,
+      message: '加载中...'
+    })
+    const geolocation = new BMap.Geolocation()
+    var _this = this
+    geolocation.getCurrentPosition(function getinfo (position: any) {
+      let city = position.address.city // 获取城市信息
+      let province = position.address.province // 获取省份信息
+      // console.log(position)
+      _this.$toast.clear()
+      _this.$toast('定位完成')
+      _this.user.province = province
+      _this.user.city = city
+    }, (e: any) => {
+      _this.$toast('定位失败')
+    }, { provider: 'baidu' })
   }
 }
 </script>

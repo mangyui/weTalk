@@ -83,11 +83,5 @@ export default class Lobby extends Vue {
       }
     }
   }
-  .liblue{
-    background: linear-gradient(-45deg,#5460f1,#5bc5ff);
-  }
-  .lired{
-    background: linear-gradient(-45deg,#e25778,#fd8783);
-  }
 }
 </style>

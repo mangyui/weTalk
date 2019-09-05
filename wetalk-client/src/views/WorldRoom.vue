@@ -1,6 +1,6 @@
 <template>
   <div class="talk-room">
-    <van-nav-bar fixed :title="'世界频道(' + myTalk.numberP + ')'" left-text="返回" left-arrow  @click-left="$router.push('/')">
+    <van-nav-bar fixed :title="'世界频道(' + myTalk.numberP + ')'" left-text="返回" left-arrow  @click-left="$router.go(-1)">
       <van-icon name="weapp-nav" slot="right" />
     </van-nav-bar>
     <div class="content-wrap">
@@ -14,7 +14,7 @@
             <div class="mess-item" v-if="item.type==1&&item.user.id!=user.id">
               <div class="mu-avatar">
                 <img :src="item.user.avatar">
-                <img class="icon-sex" :src="item.user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')" alt="">
+                <img class="icon-sex" :src="item.user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')">
               </div>
               <div class="mess-item-right">
                 <span>{{item.user.name}}</span>
@@ -25,7 +25,7 @@
             <div class="mess-item-me" v-else-if="item.type==1&&item.user.id==user.id">
               <div class="mu-avatar">
                 <img :src="user.avatar">
-                <img class="icon-sex" :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')" alt="">
+                <img class="icon-sex" :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')">
               </div>
               <div class="mess-item-right">
                 <span>{{user.name}}</span>

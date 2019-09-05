@@ -12,7 +12,7 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'home',
+      name: 'Home',
       component: () => import('@/views/Home.vue'),
       redirect: '/home/lobby',
       children: [
@@ -29,14 +29,24 @@ export default new Router({
       ]
     },
     {
-      path: '/WorldRoom',
+      path: '/worldroom',
       name: 'WorldRoom',
       component: () => import('@/views/WorldRoom.vue')
     },
     {
-      path: '/UserEdit',
+      path: '/userhomepage',
+      name: 'UserHomePage',
+      component: () => import('@/views/UserHomePage.vue')
+    },
+    {
+      path: '/useredit',
       name: 'UserEdit',
       component: () => import('@/views/UserEdit.vue')
+    },
+    {
+      path: '/setting',
+      name: 'Setting',
+      component: () => import('@/views/Setting.vue')
     },
     {
       path: '*',

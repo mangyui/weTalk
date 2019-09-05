@@ -11,6 +11,11 @@ module.exports = {
       }
     }
   },
+  configureWebpack: {
+    externals: {
+      'BMap': 'BMap'
+    }
+  },
   devServer: {
     // port: 8087, // 端口号
     // host: '0.0.0.0',
