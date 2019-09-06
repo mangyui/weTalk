@@ -8,7 +8,7 @@ let persons : Person[] = require('@/util/Persons').persons //
 //   '/'
 // ] // 不重定向白名单
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to: Route, from: Route, next: any) => {
   // console.log(store.getters.user)
   // console.log(store.getters.user.id)
   if (!store.getters.user.id) {

@@ -1,0 +1,14 @@
+
+@url=http://www.baidu.com
+
+### 1
+get {{url}}/blog
+
+### 2
+post {{url}}/blog/getAll
+Content-Type: application/json
+
+{
+  "name": "mangyu",
+  "number": 11
+}

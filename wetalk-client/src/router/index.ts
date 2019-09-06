@@ -4,7 +4,7 @@ import Home from '@/views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router:Router = new Router({
   routes: [
     {
       path: '',
@@ -49,8 +49,20 @@ export default new Router({
       component: () => import('@/views/Setting.vue')
     },
     {
+      path: '/weather',
+      name: 'Weather',
+      component: () => import('@/views/more/MyWeather.vue')
+    },
+    {
+      path: '/music',
+      name: 'Music',
+      component: () => import('@/views/more/Music.vue')
+    },
+    {
       path: '*',
       redirect: '/'
     }
   ]
 })
+
+export default router

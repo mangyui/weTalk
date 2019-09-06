@@ -34,12 +34,8 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Lobby extends Vue {
   searchText: string = ''
   isLoading: boolean = false
-  $toast: any = this.$toast
   onRefresh () {
     setTimeout(() => {
-      // 该组件库自己挂载的 无需自己挂载
-      // eslint-disable-next-line
-      console.log(this)
       this.$toast('刷新成功')
       this.isLoading = false
     }, 1000)
@@ -48,7 +44,6 @@ export default class Lobby extends Vue {
 </script>
 
 <style lang="less" scoped>
-
 .roomList{
   padding: 1px 0 40px;
   .room-card{

@@ -1,6 +1,6 @@
 <template>
   <div class="usercenter">
-    <van-nav-bar class="my-nav-bar" fixed title="我的主页" :border="false" left-arrow  @click-left="$router.go(-1)">
+    <van-nav-bar class="my-nav-bar" fixed title="我的主页" :border="false" left-arrow  @click-left="$store.commit('GOBACK')">
       <van-icon name="edit" slot="right" size="18px" @click="$router.push('/UserEdit')"/>
     </van-nav-bar>
     <div class="user-bg">

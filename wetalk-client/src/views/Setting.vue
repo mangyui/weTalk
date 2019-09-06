@@ -1,7 +1,7 @@
 <template>
   <div class="bgMax">
     <van-nav-bar fixed title="设置" left-arrow
-      @click-left="$router.go(-1)"></van-nav-bar>
+      @click-left="$store.commit('GOBACK')"></van-nav-bar>
     <div class="my-edit max1100">
       <van-cell-group>
         <van-cell title="账户安全" is-link />

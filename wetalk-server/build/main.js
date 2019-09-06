@@ -2,15 +2,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var app = express();
-app.use(express.static('public'));
+var bodyParser = require('body-parser');
 var port = 9612;
-var WebSocket = require('ws');
+app.use(require('cors')()); // 跨域
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+var router = require('./router');
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
+app.use(express.static('public'));
+app.use('/other', router.other);
 var server = app.listen(port, '0.0.0.0', function () {
     console.log('Example app listening on port ' + port);
 });
+var WebSocket = require('ws');
 var wss = new WebSocket.Server({ server: server });
 // Broadcast to all.
 var broadcast = function (data) {

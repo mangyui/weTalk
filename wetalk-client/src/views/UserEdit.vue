@@ -1,9 +1,9 @@
 <template>
   <div class="bgMax">
     <van-nav-bar fixed title="编辑资料" left-arrow  right-text="保存"
-      @click-left="$router.go(-1)"
+      @click-left="$store.commit('GOBACK')"
       @click-right="$store.commit('initUserInfo', this.user)"></van-nav-bar>
-    <div class="my-edit">
+    <div class="my-edit max1100">
       <van-cell-group>
         <van-field
           v-model="user.name"
@@ -72,7 +72,6 @@ export default class UserEdit extends Vue {
   areaList: JSON = areaList
   showSex: boolean = false
   showArea: boolean = false
-  $toast: any = this.$toast
   beforeDestroy () {
     this.$store.commit('initUserInfo', this.user)
   }
@@ -94,7 +93,7 @@ export default class UserEdit extends Vue {
     const geolocation = new BMap.Geolocation()
     var _this = this
     geolocation.getCurrentPosition(function getinfo (position: any) {
-      let city = position.address.city // 获取城市信息
+      let city = position.address.city
       let province = position.address.province // 获取省份信息
       // console.log(position)
       _this.$toast.clear()

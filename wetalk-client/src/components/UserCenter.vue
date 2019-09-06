@@ -1,9 +1,9 @@
 <template>
   <div class="find-wrap borderBox height100">
-    <van-nav-bar class="litheme" fixed title="我的" :border="false"  @click-right="$router.push('/setting')">
+    <van-nav-bar class="litheme" fixed :border="false"  @click-right="$store.commit('GOLEFT', '/setting')">
       <van-icon name="setting-o" slot="right" size="19px" color="#ddd"/>
     </van-nav-bar>
-    <div class="find-user max1100 litheme" @click="$router.push('/userhomepage')">
+    <div class="find-user max1100 litheme" @click="$store.commit('GOLEFT', '/userhomepage')">
       <img :src="user.avatar">
       <div>
         <p>{{user.name}}<img class="icon-sex"  :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')"></p>
@@ -12,14 +12,14 @@
       </div>
     </div>
     <div class="my-info max1100">
-      <van-cell-group title="">
+      <!-- <van-cell-group title="">
         <van-cell title="动态" is-link icon="/icons/星星.svg" />
+      </van-cell-group> -->
+      <van-cell-group title="">
+        <van-cell title="天气" is-link icon="/icons/天气.svg" @click="$store.commit('GOLEFT', '/weather')"/>
       </van-cell-group>
       <van-cell-group title="">
-        <van-cell title="天气" is-link value="小雨" icon="/icons/天气.svg" />
-      </van-cell-group>
-      <van-cell-group title="">
-        <van-cell title="听一听" is-link icon="/icons/音乐.svg"/>
+        <van-cell title="听一听" is-link icon="/icons/音乐.svg" @click="$store.commit('GOLEFT', '/music')"/>
         <van-cell title="玩一玩" is-link icon="/icons/游戏.svg"/>
         <van-cell title="用一用" is-link icon="/icons/表情.svg"/>
       </van-cell-group>
@@ -44,7 +44,7 @@ export default class UserCenter extends Vue {
 <style lang="less" scoped>
 .find-wrap{
   background: #f9f9f9;
-  padding-top: 46px;
+  padding-top: 45px;
 }
 .find-user{
   display: flex;

@@ -1,18 +1,30 @@
 import express = require('express')
 const app: express.Application = express();
-app.use(express.static('public'));
+const bodyParser = require('body-parser')
 
 const port:number = 9612
 
-const WebSocket = require('ws')
+app.use(require('cors')()) // 跨域
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+const router = require('./router')
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
+app.use(express.static('public'));
+
+app.use('/other', router.other)
+
+
 
 var server = app.listen(port, '0.0.0.0', () => {
   console.log('Example app listening on port ' + port);
 });
+
+
+const WebSocket = require('ws')
 
 const wss = new WebSocket.Server({ server });
 // Broadcast to all.
