@@ -3,8 +3,8 @@ import router from '@/router'
 
 export default {
   state: {
-    isleft: false,
-    isright: false
+    isleft: false, // 路由前进
+    isright: false // 路由后退
   },
   mutations: {
     GOLEFT (state: any, path: any) {

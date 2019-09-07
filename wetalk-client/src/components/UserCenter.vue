@@ -1,7 +1,7 @@
 <template>
   <div class="find-wrap borderBox height100">
     <van-nav-bar class="litheme" fixed :border="false"  @click-right="$store.commit('GOLEFT', '/setting')">
-      <van-icon name="setting-o" slot="right" size="19px" color="#ddd"/>
+      <van-icon name="setting-o" slot="right" color="#ddd"/>
     </van-nav-bar>
     <div class="find-user max1100 litheme" @click="$store.commit('GOLEFT', '/userhomepage')">
       <img :src="user.avatar">
@@ -17,10 +17,11 @@
       </van-cell-group> -->
       <van-cell-group title="">
         <van-cell title="天气" is-link icon="/icons/天气.svg" @click="$store.commit('GOLEFT', '/weather')"/>
+        <van-cell title="地图" is-link icon="/icons/定位.svg" @click="$store.commit('GOLEFT', '/MyMap')"/>
       </van-cell-group>
       <van-cell-group title="">
-        <van-cell title="听一听" is-link icon="/icons/音乐.svg" @click="$store.commit('GOLEFT', '/music')"/>
         <van-cell title="玩一玩" is-link icon="/icons/游戏.svg"/>
+        <van-cell title="听一听" is-link icon="/icons/音乐.svg" @click="$store.commit('GOLEFT', '/music')"/>
         <van-cell title="用一用" is-link icon="/icons/表情.svg"/>
       </van-cell-group>
       <van-cell-group title="">
@@ -66,9 +67,10 @@ export default class UserCenter extends Vue {
     bottom: 50%;
     transform: translateY(50%);
     color: #999;
+    font-size: 18px;
   }
   p{
-    font-size: 1.1em;
+    font-size: 17px;
     margin-bottom: 2px;
     color: #fefefe;
     img{

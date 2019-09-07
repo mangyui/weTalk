@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <transition :name="transitionName">
-      <keep-alive exclude="WorldRoom">
+      <keep-alive exclude="WorldRoom,MyMap">
         <router-view class="Router"/>
       </keep-alive>
+    </transition>
+    <transition name="slideleft">
+      <AudioBox/>
     </transition>
   </div>
 </template>
@@ -12,8 +15,13 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
+import AudioBox from '@/components/AudioBox.vue' // 要写完整.vue
+
 export default Vue.extend({
   name: 'App',
+  components: {
+    AudioBox
+  },
   computed: {
     ...mapGetters(['isleft', 'isright'])
   },
@@ -36,6 +44,11 @@ export default Vue.extend({
 </script>
 
 <style lang="less" scoped>
+#app{
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+}
 .Router {
   position: absolute;
   top: 0;
@@ -43,7 +56,8 @@ export default Vue.extend({
   right: 0;
   width: 100%;
   height: 100%;
-  transition: all .28s ease;
+  transition: all 0.28s ease;
+  opacity: 1;
 }
 .slideleft-enter,
  .slideright-leave-active {

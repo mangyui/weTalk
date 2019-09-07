@@ -59,6 +59,11 @@ const router:Router = new Router({
       component: () => import('@/views/more/Music.vue')
     },
     {
+      path: '/mymap',
+      name: 'MyMap',
+      component: () => import('@/views/more/MyMap.vue')
+    },
+    {
       path: '*',
       redirect: '/'
     }

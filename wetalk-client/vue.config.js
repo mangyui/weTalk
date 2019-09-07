@@ -1,3 +1,6 @@
+const autoprefixer = require('autoprefixer')
+const pxtorem = require('postcss-pxtorem')
+
 module.exports = {
   publicPath: './',
   productionSourceMap: false,
@@ -10,6 +13,17 @@ module.exports = {
           orange: '#f08d49',
           'text-color': '#111'
         }
+      },
+      postcss: {
+        plugins: [
+          autoprefixer(),
+          pxtorem({
+            rootValue: 37.5,
+            propList: ['*'],
+            // 该项仅在使用 Circle 组件时需要
+            selectorBlackList: ['van-circle__layer']
+          })
+        ]
       }
     }
   },

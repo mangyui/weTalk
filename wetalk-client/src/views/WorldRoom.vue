@@ -4,11 +4,13 @@
       <van-icon name="weapp-nav" slot="right" />
     </van-nav-bar>
     <div class="content-wrap">
+      <van-notice-bar
+        text="该聊天室内，所有都可见"
+        left-icon="volume-o"
+        mode="closeable"
+      />
       <div class="mess-box" :style="{paddingBottom: isMore!=0?'160px':'55px'}">
-        <van-notice-bar
-          text="该聊天室内，所有都可见"
-          left-icon="volume-o"
-        />
+
         <div class="mess-list">
           <div class="list-item" v-for="(item,index) in msgList" :key="index">
             <div class="mess-item" v-if="item.type==1&&item.user.id!=user.id">
@@ -29,7 +31,7 @@
               </div>
               <div class="mess-item-right">
                 <span>{{user.name}}</span>
-                <p class="mess-item-content">{{item.content}}</p>
+                <p class="mess-item-content" @touchstart="gtouchstart(index)" @touchend="gtouchend">{{item.content}}</p>
                 <p class="mess-item-time">{{item.time}}</p>
               </div>
             </div>
@@ -41,6 +43,13 @@
       </div>
     </div>
     <InputBox @changeMore="changeMore" @toSend="toSend"></InputBox>
+    <van-action-sheet
+      v-model="showMore"
+      :actions="actions"
+      cancel-text="取消"
+      @select="onSelect"
+      @cancel="showMore=false"
+    />
   </div>
 </template>
 
@@ -63,8 +72,15 @@ export default class WorldRoom extends Vue {
   @Getter msgList!: Message[]
 
   myTalk!: MyTalk
-  // sendText: string = ''
   isMore: number = 0
+
+  mIndex: number = -1
+  showMore: boolean = false
+  timeOutEvent: any
+  actions: Array<any> = [
+    { name: '复制' },
+    { name: '撤回' }
+  ]
 
   changeMore (newValue: number): void {
     this.isMore = newValue
@@ -76,6 +92,22 @@ export default class WorldRoom extends Vue {
     if (sendText !== '') {
       this.myTalk.creatSending(sendText, 1)
     }
+  }
+  gtouchstart (mIndex: number) {
+    // 开始触摸
+    this.timeOutEvent = setTimeout(() => {
+      this.showMore = true
+      this.mIndex = mIndex
+    }, 666)
+  }
+  gtouchend () {
+    clearTimeout(this.timeOutEvent)
+  }
+  onSelect (item: any, index: number) {
+    if (index === 1) {
+      this.backMess(this.mIndex)
+    }
+    this.showMore = false
   }
   created () {
     this.myTalk = new MyTalk(this.user, 0)

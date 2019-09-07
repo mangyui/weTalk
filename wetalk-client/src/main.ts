@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/'
 import store from './store/'
+// import 'amfe-flexible'
+import '@/util/pcRem.js'
+// import '@/util/initMap.js'
+
 import './plugins/vantUI.js'
 import '@/styles/index.less'
 import '@/styles/mobile.less'
@@ -9,7 +13,10 @@ import './guard.ts'
 
 import './api/get.js'
 import './api/post.js'
+
 import { Toast } from 'vant'
+
+Vue.prototype.$win = window
 
 Vue.config.productionTip = false
 
@@ -22,6 +29,7 @@ declare module 'vue/types/vue' {
     $toast: Toast
     $toGet: any
     $toPost: any
+    $win: any
   }
 }
 

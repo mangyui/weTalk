@@ -28,7 +28,7 @@ class MyTalk {
     }
     this.ws.onmessage = (e: any) => {
       var resData = JSON.parse(e.data)
-      console.log('resData', resData)
+      // console.log('resData', resData)
       if (resData.isRemove) {
         store.commit('removeMsg', resData.message)
       } else {

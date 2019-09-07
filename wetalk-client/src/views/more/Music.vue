@@ -17,25 +17,26 @@
         </div>
         <div class="music-item-right">
           <div v-if="isPlay!=0&&currentSong.songid==item.songid">
-            <van-icon v-if="isPlay==1" name="pause-circle" size="2em" color="#00a7ff"/>
-            <van-icon v-else name="play-circle" size="2em" color="#ccc"/>
+            <van-icon v-if="isPlay==1" name="pause-circle" color="#00a7ff"/>
+            <van-icon v-else name="play-circle" color="#ccc"/>
           </div>
         </div>
       </div>
     </div>
-    <audio id="Audio" ref="mAudio" :src="currentSong.url" autoplay loop="loop"> </audio>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 
 @Component
 export default class Music extends Vue {
+  @Getter isPlay!: number // ！声明肯定会有值
+  @Getter currentSong!: any
+  @Getter city!: string
   musics: Array<any> = []
   text: string = ''
-  isPlay: number = 0
-  currentSong: any = {}
   getMusic () {
     if (this.text.trim() !== '') {
       this.$toast.loading({
@@ -54,15 +55,14 @@ export default class Music extends Vue {
     }
   }
   toPlay (song: any) {
-    if (this.currentSong.songid === song.songid && this.isPlay === 1) {
-      this.$refs.mAudio.pause()
-      this.isPlay = 2
-    } else {
-      this.currentSong = song
-      if (this.isPlay === 2) {
-        this.$refs.mAudio.play()
+    if (this.currentSong.songid === song.songid) {
+      if (this.isPlay === 1) {
+        this.$store.commit('TOPAUSE')
+      } else {
+        this.$store.commit('TOJIXU')
       }
-      this.isPlay = 1
+    } else {
+      this.$store.commit('TOPLAY', song)
     }
   }
   created () {
@@ -71,9 +71,6 @@ export default class Music extends Vue {
 </script>
 
 <style lang="less" scoped>
-#Audio{
-  display: none;
-}
 .music-box{
   padding: 10px;
   .music-item{
@@ -82,10 +79,11 @@ export default class Music extends Vue {
     align-items: center;
     padding: 13px 7px;
     overflow: hidden;
+    font-size: 0;
     .music-item-left{
       display: flex;
       padding-right: 10px;
-      max-width: 80%;
+      width: 285px;
       overflow: hidden;
       img{
         width: 60px;
@@ -94,18 +92,23 @@ export default class Music extends Vue {
         margin-right: 10px;
       }
       b{
-        font-size: 1em;
+        font-size: 15px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       p{
-        font-size: 0.9em;
+        font-size: 14px;
         color: #777;
         margin-top: 5px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+    }
+    .music-item-right{
+      .van-icon{
+        font-size: 28px;
       }
     }
   }

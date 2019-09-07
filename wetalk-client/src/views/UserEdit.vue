@@ -90,7 +90,7 @@ export default class UserEdit extends Vue {
       mask: true,
       message: '加载中...'
     })
-    const geolocation = new BMap.Geolocation()
+    const geolocation = new this.$win.BMap.Geolocation()
     var _this = this
     geolocation.getCurrentPosition(function getinfo (position: any) {
       let city = position.address.city

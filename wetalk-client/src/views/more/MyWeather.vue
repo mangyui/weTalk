@@ -1,7 +1,7 @@
 <template>
   <div class="bgMax max1100">
     <van-nav-bar fixed title="天气" left-arrow @click-left="$store.commit('GOBACK')" >
-      <van-icon name="hotel-o" slot="right" size="19px" @click="showArea=true"/>
+      <van-icon name="hotel-o" slot="right" @click="showArea=true"/>
     </van-nav-bar>
     <div>
       <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
@@ -116,7 +116,7 @@ export default class MyWeather extends Vue {
   position: relative;
   color: #888;
   b{
-    font-size: 3em;
+    font-size: 36px;
     color: #13227a;
     font-weight: bold;
     margin-bottom: 5px;
@@ -124,10 +124,10 @@ export default class MyWeather extends Vue {
   p{
     margin: 8px;
     color: #555;
-    font-size: 0.9em;
+    font-size: 15px;
   }
   i{
-    font-size: 0.8em;
+    font-size: 14px;
   }
   div{
     position: absolute;
@@ -135,12 +135,12 @@ export default class MyWeather extends Vue {
     left: 15px;
     text-align: left;
     h3{
-      font-size: 1.2em;
+      font-size: 17px;
       margin-bottom: 8px;
       color: #13227a;
     }
     h4{
-      font-size: 0.8em;
+      font-size: 14px;
       color: #666;
     }
   }
@@ -159,6 +159,6 @@ export default class MyWeather extends Vue {
   line-height: 45px;
   align-items: center;
   color: #666;
-  font-size: 0.8em;
+  font-size: 14px;
 }
 </style>

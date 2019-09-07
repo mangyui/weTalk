@@ -1,7 +1,7 @@
 <template>
   <div class="usercenter">
     <van-nav-bar class="my-nav-bar" fixed title="我的主页" :border="false" left-arrow  @click-left="$store.commit('GOBACK')">
-      <van-icon name="edit" slot="right" size="18px" @click="$router.push('/UserEdit')"/>
+      <van-icon name="edit" slot="right" @click="$store.commit('GOLEFT', '/UserEdit')"/>
     </van-nav-bar>
     <div class="user-bg">
       <div class="bg-mask" :style="{backgroundImage: 'url('+user.avatar+')'}"></div>
@@ -93,11 +93,11 @@ export default class UserHomePage extends Vue {
   b{
     font-weight: bold;
     color: #fff;
-    font-size: 1.2em;
+    font-size: 18px;
   }
   p{
     margin: 10px 0;
-    font-size: 0.8em;
+    font-size: 13px;
     color: #666;
     text-align: left;
   }
