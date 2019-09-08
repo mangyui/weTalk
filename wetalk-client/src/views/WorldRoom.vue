@@ -4,13 +4,12 @@
       <van-icon name="weapp-nav" slot="right" />
     </van-nav-bar>
     <div class="content-wrap">
-      <van-notice-bar
+     <van-notice-bar
         text="该聊天室内，所有都可见"
         left-icon="volume-o"
         mode="closeable"
       />
       <div class="mess-box" :style="{paddingBottom: isMore!=0?'160px':'55px'}">
-
         <div class="mess-list">
           <div class="list-item" v-for="(item,index) in msgList" :key="index">
             <div class="mess-item" v-if="item.type==1&&item.user.id!=user.id">
@@ -35,7 +34,7 @@
                 <p class="mess-item-time">{{item.time}}</p>
               </div>
             </div>
-            <div class="mess-system" v-else>
+            <div v-show="isShowInOut" class="mess-system" v-else>
               {{item.content}}
             </div>
           </div>
@@ -70,6 +69,7 @@ import InputBox from '@/components/InputBox.vue' // 要写完整.vue
 export default class WorldRoom extends Vue {
   @Getter user!: User // ！声明肯定会有值
   @Getter msgList!: Message[]
+  @Getter isShowInOut!: boolean
 
   myTalk!: MyTalk
   isMore: number = 0

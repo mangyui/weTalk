@@ -22,7 +22,7 @@
       <van-cell-group title="">
         <van-cell title="玩一玩" is-link icon="/icons/游戏.svg"/>
         <van-cell title="听一听" is-link icon="/icons/音乐.svg" @click="$store.commit('GOLEFT', '/music')"/>
-        <van-cell title="用一用" is-link icon="/icons/表情.svg"/>
+        <van-cell title="用一用" is-link icon="/icons/表情.svg" @click="$store.commit('GOLEFT', '/applications')"/>
       </van-cell-group>
       <van-cell-group title="">
         <van-cell title="通知" is-link icon="/icons/通知.svg" />

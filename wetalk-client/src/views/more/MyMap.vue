@@ -39,7 +39,8 @@ export default class MyMap extends Vue {
     this.map.centerAndZoom(mpoint, 50)
     this.map.enableScrollWheelZoom()
     this.map.enableDragging()
-    // this.getLocation(true)
+
+    this.$toast.clear()
   }
   getLocation (me: boolean) {
     const geolocation = new this.BMap.Geolocation()
@@ -71,10 +72,17 @@ export default class MyMap extends Vue {
     }
   }
   searchArea () {
+    this.map.clearOverlays()
     let local = new this.BMap.LocalSearch(this.map, {
       renderOptions: { map: this.map }
     })
     local.search(this.value)
+    if (this.mk) {
+      this.map.addOverlay(this.mk)
+    }
+    // setTimeout(() => {
+    //   this.map.setZoom(14)
+    // }, 1000)
   }
   addEve () {
     this.timeEve = setInterval(() => {
@@ -82,6 +90,10 @@ export default class MyMap extends Vue {
     }, 10000)
   }
   mounted () {
+    this.$toast.loading({
+      mask: true,
+      message: '加载中...'
+    })
     this.BMap = this.$win.BMap
     this.getLocation(true)
     this.addEve()

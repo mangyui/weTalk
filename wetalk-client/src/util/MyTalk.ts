@@ -7,6 +7,7 @@ class MyTalk {
   public ws: any
   public user: User
   public numberP: number
+  public isOver: boolean = false
   constructor (user: User, numberP: number) {
     this.ws = new WebSocket('ws://47.106.130.141:9612')
     // ws = new WebSocket('ws://' + window.location.host)
@@ -55,7 +56,14 @@ class MyTalk {
     try {
       const msgEl = document.querySelector('.mess-list .list-item:last-child')
       if (msgEl) {
-        msgEl.scrollIntoView()
+        if (!this.isOver) {
+          setTimeout(() => {
+            this.isOver = true
+            msgEl.scrollIntoView()
+          }, 300)
+        } else {
+          msgEl.scrollIntoView()
+        }
       }
     } catch (err) {
       console.error(err)

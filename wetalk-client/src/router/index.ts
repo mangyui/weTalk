@@ -64,6 +64,16 @@ const router:Router = new Router({
       component: () => import('@/views/more/MyMap.vue')
     },
     {
+      path: '/applications',
+      name: 'Applications',
+      component: () => import('@/views/more/Applications.vue')
+    },
+    {
+      path: '/applications/base64',
+      name: 'Base64',
+      component: () => import('@/views/applications/Base64.vue')
+    },
+    {
       path: '*',
       redirect: '/'
     }

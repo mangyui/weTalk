@@ -50,6 +50,7 @@ export default class InputBox extends Vue {
 }
 .input-mess{
   font-size: 15px;
+  resize:none;
 }
 .input-icon{
   font-size: 30px;

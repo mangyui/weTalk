@@ -38,6 +38,7 @@ export default Vue.extend({
       if (this.isright) {
         this.transitionName = 'slideright'
       }
+      this.$toast.clear()
     }
   }
 })

@@ -1,0 +1,47 @@
+.list-box{
+  padding: 10px;
+  .list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 10px;
+    overflow: hidden;
+    font-size: 0;
+    .list-item-left{
+      display: flex;
+      padding-right: 10px;
+      width: 285px;
+      overflow: hidden;
+      img{
+        width: 60px;
+        height: 60px;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      >div{
+        flex-grow: 1;
+        overflow: hidden;
+      }
+      b{
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+      }
+      p{
+        font-size: 13px;
+        color: #777;
+        margin-top: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    .list-item-right{
+      .van-icon{
+        font-size: 28px;
+      }
+    }
+  }
+}

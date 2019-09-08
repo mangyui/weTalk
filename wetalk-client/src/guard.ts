@@ -31,6 +31,9 @@ router.beforeEach((to: Route, from: Route, next: any) => {
 
 router.afterEach((to: Route, from: Route) => {
   setTimeout(() => {
-    window.scrollTo(0, 0)
+    let app = document.getElementById('app')
+    if (app) {
+      app.scrollTo(0, 0)
+    }
   }, 0)
 })

@@ -6,16 +6,16 @@
       placeholder="搜索音乐"
       @search="getMusic"
     />
-    <div class="music-box">
-      <div class="music-item" v-for="(item, index) in musics" :key="index" @click="toPlay(item)">
-        <div class="music-item-left">
-          <img :src="item.pic">
+    <div class="list-box">
+      <div class="list-item" v-for="(item, index) in musics" :key="index" @click="toPlay(item)">
+        <div class="list-item-left">
+          <img v-lazy="item.pic">
           <div>
             <b>{{item.title}}</b>
             <p>{{item.author}}</p>
           </div>
         </div>
-        <div class="music-item-right">
+        <div class="list-item-right">
           <div v-if="isPlay!=0&&currentSong.songid==item.songid">
             <van-icon v-if="isPlay==1" name="pause-circle" color="#00a7ff"/>
             <van-icon v-else name="play-circle" color="#ccc"/>
@@ -71,46 +71,8 @@ export default class Music extends Vue {
 </script>
 
 <style lang="less" scoped>
-.music-box{
-  padding: 10px;
-  .music-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 13px 7px;
-    overflow: hidden;
-    font-size: 0;
-    .music-item-left{
-      display: flex;
-      padding-right: 10px;
-      width: 285px;
-      overflow: hidden;
-      img{
-        width: 60px;
-        height: 60px;
-        border-radius: 4px;
-        margin-right: 10px;
-      }
-      b{
-        font-size: 15px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      p{
-        font-size: 14px;
-        color: #777;
-        margin-top: 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-    .music-item-right{
-      .van-icon{
-        font-size: 28px;
-      }
-    }
-  }
+@import '../../styles/listitem.less';
+.list-box .list-item .list-item-left img{
+  border-radius: 50%;
 }
 </style>
