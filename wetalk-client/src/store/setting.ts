@@ -1,6 +1,6 @@
 export default {
   state: {
-    isShowInOut: JSON.parse(localStorage.getItem('isShowInOut') || '') || false
+    isShowInOut: JSON.parse(localStorage.getItem('isShowInOut') || '{}') || false
   },
   mutations: {
     SETShowInOut (state: any, isF: boolean) {

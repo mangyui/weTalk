@@ -2,7 +2,7 @@
   <div class="home">
     <router-view />
     <van-tabbar route>
-      <van-tabbar-item replace to="/home/lobby" icon="chat">
+      <van-tabbar-item replace to="/home/lobby" icon="wap-home">
         大厅
       </van-tabbar-item>
       <van-tabbar-item replace to="/home/usercenter" icon="manager">

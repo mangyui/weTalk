@@ -2,7 +2,7 @@
   <div class="bgMax">
     <van-nav-bar fixed title="编辑资料" left-arrow  right-text="保存"
       @click-left="$store.commit('GOBACK')"
-      @click-right="$store.commit('initUserInfo', this.user)"></van-nav-bar>
+      @click-right="$store.commit('initUserInfo', user)"></van-nav-bar>
     <div class="my-edit max1100">
       <van-cell-group>
         <van-field
@@ -14,6 +14,7 @@
           :value="user.sex==1?'男':'女'"
           label="性别"
           placeholder="请填写性别"
+          disabled
           @click="showSex = true"
         />
       </van-cell-group>
@@ -23,12 +24,14 @@
           v-model="user.province"
           label="省份"
           placeholder="请填写省份"
+          disabled
            @click="showArea=true"
         />
         <van-field
           v-model="user.city"
           label="城市"
           placeholder="请填写城市"
+          disabled
            @click="showArea=true"
         />
       </van-cell-group>

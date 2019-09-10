@@ -10,14 +10,13 @@ app.use(bodyParser.json())
 
 const router = require('./router')
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-app.use(express.static('public'));
+app.use(express.static('public'))
 
 app.use('/other', router.other)
 
-
+app.get('/test', function (req, res) {
+  res.send('Hello World!');
+});
 
 var server = app.listen(port, '0.0.0.0', () => {
   console.log('Example app listening on port ' + port);
@@ -29,7 +28,7 @@ const WebSocket = require('ws')
 const wss = new WebSocket.Server({ server });
 // Broadcast to all.
 const broadcast = (data: string) => {
-	console.log('ccc', wss.clients.size)
+	// console.log('ccc', wss.clients.size)
 	var dataJson = JSON.parse(data)
 	dataJson.number = wss.clients.size
 	wss.clients.forEach((client: any) => {
@@ -39,7 +38,7 @@ const broadcast = (data: string) => {
 	});
 };
 wss.on('connection', (ws: any) => {
-	console.log(new Date().toUTCString() + ' - connection established');
+	// console.log(new Date().toUTCString() + ' - connection established');
 	ws.on('message', (data: string) => {
 		broadcast(data);
 	});
@@ -49,12 +48,11 @@ wss.on('connection', (ws: any) => {
 	});
 
 	wss.on('close', (mes: any) => {
-		console.log(mes);
-		console.log('closed');
+		// console.log(mes);
+		// console.log('closed');
 	});
 });
 
 wss.on('error', (err: any) => {
-	console.log('error');
 	console.log(err);
 });

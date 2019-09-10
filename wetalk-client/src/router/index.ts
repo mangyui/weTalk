@@ -64,6 +64,11 @@ const router:Router = new Router({
       component: () => import('@/views/more/MyMap.vue')
     },
     {
+      path: '/games',
+      name: 'Games',
+      component: () => import('@/views/more/Games.vue')
+    },
+    {
       path: '/applications',
       name: 'Applications',
       component: () => import('@/views/more/Applications.vue')
@@ -72,6 +77,16 @@ const router:Router = new Router({
       path: '/applications/base64',
       name: 'Base64',
       component: () => import('@/views/applications/Base64.vue')
+    },
+    {
+      path: '/other',
+      name: 'Other',
+      component: () => import('@/views/more/Other.vue')
+    },
+    {
+      path: '/web/:url',
+      name: 'Web',
+      component: () => import('@/views/web/index.vue')
     },
     {
       path: '*',

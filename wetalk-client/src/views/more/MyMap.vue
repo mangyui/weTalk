@@ -46,7 +46,7 @@ export default class MyMap extends Vue {
     const geolocation = new this.BMap.Geolocation()
     geolocation.getCurrentPosition((r: any) => {
       this.point = r.point
-      let icon = new this.BMap.Icon('/icons/mapIcon.png', new this.BMap.Size(40, 50))
+      let icon = new this.BMap.Icon('./icons/mapIcon.png', new this.BMap.Size(40, 50))
       if (this.mk) {
         this.mk.setPosition(this.point)
       } else {

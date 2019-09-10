@@ -60,6 +60,7 @@ export default class MyWeather extends Vue {
       mask: true,
       message: '加载中...'
     })
+    mcity = mcity || '北京'
     this.$toGet.getWeather({ city: mcity })
       .then((res: any) => {
         let response: any = res.data
@@ -87,8 +88,8 @@ export default class MyWeather extends Vue {
     obj.low = obj.low.substring(2)
   }
   myadd2 () {
-    this.weather.forecast[0].date = '今天' + this.weather.forecast[0].date.substring(3)
-    this.yesterday.date = '昨天' + this.yesterday.date.substring(3)
+    this.weather.forecast[0].date = '今天' + this.weather.forecast[0].date.substring(this.weather.forecast[0].date.length - 3)
+    this.yesterday.date = '昨天' + this.yesterday.date.substring(this.yesterday.date.length - 3)
   }
   areaConfirm (value: Array<any>) {
     this.showArea = false

@@ -12,7 +12,7 @@
       </van-cell-group>
 
       <van-cell-group>
-        <van-cell title="关于盲鱼" is-link />
+        <van-cell title="关于鱼咖" is-link />
         <van-cell value="1.0.1" is-link>
           <template slot="title">
             <span class="custom-title">检查更新</span>

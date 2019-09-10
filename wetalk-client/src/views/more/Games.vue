@@ -1,9 +1,9 @@
 <template>
   <div class="bgWhite max1100">
-    <van-nav-bar fixed title="用一用" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
+    <van-nav-bar fixed title="玩一玩" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
     <van-search
       v-model="text"
-      placeholder="搜索小应用"
+      placeholder="搜索小游戏"
       @search="getSearch"
     />
     <div class="list-box">
@@ -16,7 +16,8 @@
           </div>
         </div>
         <div class="list-item-right">
-          <van-button size="small" @click="$store.commit('GOLEFT', item.url)">启动</van-button>
+          <van-button size="small" @click="$store.commit('GOLEFT', item.url)">打开</van-button>
+            <!-- <van-icon name="pause-circle" color="#00a7ff"/> -->
         </div>
       </div>
       <br />
@@ -29,12 +30,17 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Applications extends Vue {
+export default class Games extends Vue {
   lists: Array<any> = [{
-    title: 'base64编码/解码',
-    pic: 'http://images.liqucn.com/h018/h47/img201411030418350433_info300X300.png',
-    desc: 'base64转化原文本，原文本转化base64',
-    url: '/applications/base64'
+    title: 'Flappy Bird',
+    pic: 'http://img1.gamersky.com/image2014/09/20140920lyq_15/gamersky_01small_02_20149201413568.jpg',
+    desc: '像素鸟，穿越管道',
+    url: {
+      name: 'Web',
+      params: {
+        url: 'http://demo.mccyu.com/flappybird/'
+      }
+    }
   }]
   text: string = ''
   getSearch () {

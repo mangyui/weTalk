@@ -10,7 +10,7 @@ class MyTalk {
   public isOver: boolean = false
   constructor (user: User, numberP: number) {
     this.ws = new WebSocket('ws://47.106.130.141:9612')
-    // ws = new WebSocket('ws://' + window.location.host)
+    // this.ws = new WebSocket('ws://' + window.location.host)
     this.user = user
     this.numberP = numberP
   }

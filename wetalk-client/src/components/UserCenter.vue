@@ -1,9 +1,9 @@
 <template>
   <div class="find-wrap borderBox height100">
-    <van-nav-bar class="litheme" fixed :border="false"  @click-right="$store.commit('GOLEFT', '/setting')">
-      <van-icon name="setting-o" slot="right" color="#ddd"/>
+    <van-nav-bar fixed :border="false"  @click-right="$store.commit('GOLEFT', '/setting')">
+      <van-icon name="setting-o" slot="right" color="#888"/>
     </van-nav-bar>
-    <div class="find-user max1100 litheme" @click="$store.commit('GOLEFT', '/userhomepage')">
+    <div class="find-user max1100" @click="$store.commit('GOLEFT', '/userhomepage')">
       <img :src="user.avatar">
       <div>
         <p>{{user.name}}<img class="icon-sex"  :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')"></p>
@@ -16,17 +16,17 @@
         <van-cell title="动态" is-link icon="/icons/星星.svg" />
       </van-cell-group> -->
       <van-cell-group title="">
-        <van-cell title="天气" is-link icon="/icons/天气.svg" @click="$store.commit('GOLEFT', '/weather')"/>
-        <van-cell title="地图" is-link icon="/icons/定位.svg" @click="$store.commit('GOLEFT', '/MyMap')"/>
+        <van-cell title="天气" is-link icon="./icons/weather.svg" @click="$store.commit('GOLEFT', '/weather')"/>
+        <van-cell title="地图" is-link icon="./icons/map.svg" @click="$store.commit('GOLEFT', '/MyMap')"/>
       </van-cell-group>
       <van-cell-group title="">
-        <van-cell title="玩一玩" is-link icon="/icons/游戏.svg"/>
-        <van-cell title="听一听" is-link icon="/icons/音乐.svg" @click="$store.commit('GOLEFT', '/music')"/>
-        <van-cell title="用一用" is-link icon="/icons/表情.svg" @click="$store.commit('GOLEFT', '/applications')"/>
+        <van-cell title="用一用" is-link icon="./icons/expression.svg" @click="$store.commit('GOLEFT', '/applications')"/>
+        <van-cell title="玩一玩" is-link icon="./icons/game.svg" @click="$store.commit('GOLEFT', '/games')"/>
+        <van-cell title="听一听" is-link icon="./icons/music.svg" @click="$store.commit('GOLEFT', '/music')"/>
       </van-cell-group>
       <van-cell-group title="">
-        <van-cell title="通知" is-link icon="/icons/通知.svg" />
-        <van-cell title="事务" is-link icon="/icons/列表.svg" />
+        <van-cell title="酷站" is-link icon="./icons/star.svg" @click="$store.commit('GOLEFT', '/other')"/>
+        <van-cell title="事务" is-link icon="./icons/list.svg" />
       </van-cell-group>
     </div>
   </div>
@@ -45,17 +45,24 @@ export default class UserCenter extends Vue {
 <style lang="less" scoped>
 .find-wrap{
   background: #f9f9f9;
-  padding-top: 45px;
+  padding-top: 46px;
+  padding-bottom: 55px;
+  overflow-y: auto;
+}
+.bgtheme{
+  background: #5843a0;
 }
 .find-user{
   display: flex;
   align-items: center;
   padding: 15px;
   position: relative;
-  background: #fff;
+  // background: #fff;
+  // border-bottom: 1px solid #f4f4f4;
+  background-image: linear-gradient(to bottom, #fff, #f9f9f9);
   >img {
-    width: 80px;
-    height: 80px;
+    width: 75x;
+    height: 75px;
     border-radius: 4px;
     margin-right: 20px;
     border: 1px solid #fff;
@@ -72,7 +79,6 @@ export default class UserCenter extends Vue {
   p{
     font-size: 17px;
     margin-bottom: 2px;
-    color: #fefefe;
     img{
       width: 20px;
       height: 20px;

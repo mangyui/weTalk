@@ -9,7 +9,7 @@
           <van-search placeholder="请输入搜索关键词" v-model="searchText" />
         </div>
         <div class="room-card" @click="$store.commit('GOLEFT', '/worldroom')">
-          <p>世界聊天室</p>
+          <p>世界频道</p>
           <b>13人</b>
           <img :src="require('@/assets/img/katong2.png')" alt="">
         </div>

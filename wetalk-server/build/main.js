@@ -8,11 +8,11 @@ app.use(require('cors')()); // 跨域
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 var router = require('./router');
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
 app.use(express.static('public'));
 app.use('/other', router.other);
+app.get('/test', function (req, res) {
+    res.send('Hello World!');
+});
 var server = app.listen(port, '0.0.0.0', function () {
     console.log('Example app listening on port ' + port);
 });
@@ -20,7 +20,7 @@ var WebSocket = require('ws');
 var wss = new WebSocket.Server({ server: server });
 // Broadcast to all.
 var broadcast = function (data) {
-    console.log('ccc', wss.clients.size);
+    // console.log('ccc', wss.clients.size)
     var dataJson = JSON.parse(data);
     dataJson.number = wss.clients.size;
     wss.clients.forEach(function (client) {
@@ -30,7 +30,7 @@ var broadcast = function (data) {
     });
 };
 wss.on('connection', function (ws) {
-    console.log(new Date().toUTCString() + ' - connection established');
+    // console.log(new Date().toUTCString() + ' - connection established');
     ws.on('message', function (data) {
         broadcast(data);
     });
@@ -38,11 +38,10 @@ wss.on('connection', function (ws) {
         console.log(error);
     });
     wss.on('close', function (mes) {
-        console.log(mes);
-        console.log('closed');
+        // console.log(mes);
+        // console.log('closed');
     });
 });
 wss.on('error', function (err) {
-    console.log('error');
     console.log(err);
 });
