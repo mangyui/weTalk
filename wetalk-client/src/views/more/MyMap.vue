@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar class="map-nav" fixed :border="false" title="地图" left-arrow @click-left="$store.commit('GOBACK')">
+    <van-nav-bar class="map-nav litheme" fixed :border="false" title="地图" left-arrow @click-left="$store.commit('GOBACK')">
       <van-icon name="search" slot="right" @click="isSearch=true"/>
       <van-icon name="map-marked" slot="right" @click="toMe"/>
     </van-nav-bar>
@@ -114,7 +114,9 @@ export default class MyMap extends Vue {
 .map-search{
   position: fixed;
   top: 0;
-  width: 360px;
+  width: 100%;
   z-index: 99;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <div class="find-wrap borderBox height100">
-    <van-nav-bar fixed :border="false"  @click-right="$store.commit('GOLEFT', '/setting')">
-      <van-icon name="setting-o" slot="right" color="#888"/>
+    <van-nav-bar class="litheme" fixed :border="false"  @click-right="$store.commit('GOLEFT', '/setting')">
+      <van-icon name="setting-o" slot="right"/>
     </van-nav-bar>
-    <div class="find-user max1100" @click="$store.commit('GOLEFT', '/userhomepage')">
+    <div class="find-user max1100 bgtheme" @click="$store.commit('GOLEFT', '/userhomepage')">
       <img :src="user.avatar">
       <div>
-        <p>{{user.name}}<img class="icon-sex"  :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')"></p>
+        <p>{{user.name}} <img class="icon-sex"  :src="user.sex==1?require('@/assets/img/male.svg'):require('@/assets/img/female.svg')"></p>
         <span>{{user.profile || '这个人超级懒，什么都没留下'}}</span>
         <van-icon class="me-icon" name="arrow" />
       </div>
@@ -51,6 +51,7 @@ export default class UserCenter extends Vue {
 }
 .bgtheme{
   background: #5843a0;
+  background: linear-gradient(to top,#382961,#5843a0)!important;
 }
 .find-user{
   display: flex;
@@ -59,7 +60,7 @@ export default class UserCenter extends Vue {
   position: relative;
   // background: #fff;
   // border-bottom: 1px solid #f4f4f4;
-  background-image: linear-gradient(to bottom, #fff, #f9f9f9);
+  // background-image: linear-gradient(to bottom, #fff, #f9f9f9);
   >img {
     width: 75x;
     height: 75px;
@@ -79,12 +80,13 @@ export default class UserCenter extends Vue {
   p{
     font-size: 17px;
     margin-bottom: 2px;
+    color: #fefefe;
+    font-weight: bold;
+    margin-bottom: 5px;
     img{
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      margin-left: 5px;
-      margin-bottom: 5px;
       background: #fefefe;
       vertical-align: middle;
     }

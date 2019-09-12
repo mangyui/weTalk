@@ -13,18 +13,28 @@ const router:Router = new Router({
     {
       path: '/home',
       name: 'Home',
-      component: () => import('@/views/Home.vue'),
+      component: () => import('@/views/home/Index.vue'),
       redirect: '/home/lobby',
       children: [
         {
           path: 'lobby',
           name: 'Lobby',
-          component: () => import('@/components/Lobby.vue')
+          component: () => import('@/views/lobby/Index.vue')
+        },
+        {
+          path: 'dynamic',
+          name: 'Dynamic',
+          component: () => import('@/views/dynamic/Index.vue')
+        },
+        {
+          path: 'message',
+          name: 'Message',
+          component: () => import('@/views/mess/Index.vue')
         },
         {
           path: 'usercenter',
           name: 'UserCenter',
-          component: () => import('@/components/UserCenter.vue')
+          component: () => import('@/views/user/UserCenter.vue')
         }
       ]
     },
@@ -36,12 +46,12 @@ const router:Router = new Router({
     {
       path: '/userhomepage',
       name: 'UserHomePage',
-      component: () => import('@/views/UserHomePage.vue')
+      component: () => import('@/views/user/UserHomePage.vue')
     },
     {
       path: '/useredit',
       name: 'UserEdit',
-      component: () => import('@/views/UserEdit.vue')
+      component: () => import('@/views/user/UserEdit.vue')
     },
     {
       path: '/setting',

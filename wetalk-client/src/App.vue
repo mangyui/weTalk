@@ -44,7 +44,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 #app{
   position: relative;
   overflow-x: hidden;

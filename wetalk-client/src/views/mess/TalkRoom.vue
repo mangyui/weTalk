@@ -1,13 +1,7 @@
 <template>
   <div>
-    <van-nav-bar title="大厅" fixed>
-      <van-icon name="plus" slot="right" />
-    </van-nav-bar>
-    <div class="max1100 content-wrap roomList">
+    <div class="max1100 roomList">
       <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
-        <div style="margin: 0 8px;">
-          <van-search placeholder="请输入搜索关键词" v-model="searchText" />
-        </div>
         <div class="room-card" @click="$store.commit('GOLEFT', '/worldroom')">
           <p>世界频道</p>
           <b>13人</b>
@@ -27,8 +21,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Lobby extends Vue {
-  searchText: string = ''
+export default class TalkRoom extends Vue {
   isLoading: boolean = false
   onRefresh () {
     setTimeout(() => {

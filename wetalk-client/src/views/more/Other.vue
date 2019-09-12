@@ -1,6 +1,6 @@
 <template>
   <div class="bgWhite max1100">
-    <van-nav-bar fixed title="酷站" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
+    <van-nav-bar class="litheme" :border="false" fixed title="酷站" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
 
     <div class="list-box">
       <div class="list-item" v-for="(item, index) in lists" :key="index" @click="toIndex(index)">

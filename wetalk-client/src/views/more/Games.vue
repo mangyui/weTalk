@@ -1,6 +1,6 @@
 <template>
   <div class="bgWhite max1100">
-    <van-nav-bar fixed title="玩一玩" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
+    <van-nav-bar class="litheme" :border="false" fixed title="玩一玩" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
     <van-search
       v-model="text"
       placeholder="搜索小游戏"

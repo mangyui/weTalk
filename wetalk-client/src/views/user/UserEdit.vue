@@ -1,6 +1,6 @@
 <template>
   <div class="bgMax">
-    <van-nav-bar fixed title="编辑资料" left-arrow  right-text="保存"
+    <van-nav-bar class="litheme" :border="false" fixed title="编辑资料" left-arrow  right-text="保存"
       @click-left="$store.commit('GOBACK')"
       @click-right="$store.commit('initUserInfo', user)"></van-nav-bar>
     <div class="my-edit max1100">
@@ -66,7 +66,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import User from '../model/user'
+import User from '@/model/user'
 import { areaList } from '@/util/Area.ts'
 
 @Component

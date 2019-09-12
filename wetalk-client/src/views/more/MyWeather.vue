@@ -1,6 +1,6 @@
 <template>
   <div class="bgMax max1100">
-    <van-nav-bar fixed title="天气" left-arrow @click-left="$store.commit('GOBACK')" >
+    <van-nav-bar class="litheme" :border="false" fixed title="天气" left-arrow @click-left="$store.commit('GOBACK')" >
       <van-icon name="hotel-o" slot="right" @click="showArea=true"/>
     </van-nav-bar>
     <div>
