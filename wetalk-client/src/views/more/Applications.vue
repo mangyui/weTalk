@@ -8,12 +8,10 @@
     />
     <div class="list-box">
       <div class="list-item" v-for="(item, index) in lists" :key="index">
+        <img :src="item.pic">
         <div class="list-item-left">
-          <img :src="item.pic">
-          <div>
-            <b>{{item.title}}</b>
-            <p>{{item.desc}}</p>
-          </div>
+          <b>{{item.title}}</b>
+          <p>{{item.desc}}</p>
         </div>
         <div class="list-item-right">
           <van-button size="small" @click="$store.commit('GOLEFT', item.url)">启动</van-button>
@@ -35,6 +33,16 @@ export default class Applications extends Vue {
     pic: 'http://images.liqucn.com/h018/h47/img201411030418350433_info300X300.png',
     desc: 'base64转化原文本，原文本转化base64',
     url: '/applications/base64'
+  }, {
+    title: '文字识别',
+    pic: 'http://www.haoapp.mobi/upload/2017/07/8c38a552-3f18-4642-8df5-80a8d0dbb7b5.jpg',
+    desc: '在线图像文字识别',
+    url: {
+      name: 'Web',
+      params: {
+        url: 'http://47.106.130.141:9530/#/'
+      }
+    }
   }]
   text: string = ''
   getSearch () {

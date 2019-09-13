@@ -30,6 +30,7 @@ declare module 'vue/types/vue' {
     $toGet: any
     $toPost: any
     $win: any
+    $ImagePreview: any
   }
 }
 

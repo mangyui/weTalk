@@ -29,11 +29,11 @@ router.beforeEach((to: Route, from: Route, next: any) => {
   }
 })
 
-router.afterEach((to: Route, from: Route) => {
-  setTimeout(() => {
-    let app = document.getElementById('app')
-    if (app) {
-      app.scrollTo(0, 0)
-    }
-  }, 0)
-})
+// router.afterEach((to: Route, from: Route) => {
+//   setTimeout(() => {
+//     let app = document.getElementById('app')
+//     if (app) {
+//       app.scrollTo(0, 0)
+//     }
+//   }, 200)
+// })

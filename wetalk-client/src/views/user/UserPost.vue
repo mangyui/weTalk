@@ -1,16 +1,12 @@
 <template>
-  <div class="bgMax max1100">
-    <van-nav-bar class="litheme" :border="false" title="大厅" fixed left-text="话题">
-      <van-icon name="search" slot="right"/>
-      <van-icon name="plus" slot="right" />
-    </van-nav-bar>
-    <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
+  <div>
+ <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
       <div class="post-box">
         <div class="post-item" v-for="(item,index) in 15" :key="index" @click="$store.commit('GOLEFT', '/postdetails/'+index)">
           <div class="post-user">
-            <img src="http://p2.music.126.net/MHIswsnZuYdel2_roaLlYg==/109951164192558480.jpg?param=300x300">
+            <img :src="user.avatar">
             <div class="post-user-text">
-              <p>沙雕{{index+1}}号</p>
+              <p>{{user.name}}</p>
               <span>9/13 21:46</span>
             </div>
           </div>
@@ -36,6 +32,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import User from '@/model/user'
 import ImgBox from '@/components/ImgBox.vue'
 
 @Component({
@@ -43,8 +40,10 @@ import ImgBox from '@/components/ImgBox.vue'
     ImgBox
   }
 })
-export default class Lobby extends Vue {
+export default class UserHomePage extends Vue {
+  private user: User = this.$store.getters.user
   isLoading: boolean = false
+  isScroll: boolean = false
   onRefresh () {
     setTimeout(() => {
       this.$toast('刷新成功')

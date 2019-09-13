@@ -1,14 +1,12 @@
 <template>
-  <div class="bgMax max1100">
-    <van-nav-bar class="litheme" :border="false" title="动态圈" fixed right-text="发动态">
-    </van-nav-bar>
+  <div>
     <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
       <div class="post-box dongtai-box">
-        <div class="post-item" v-for="(item,index) in 15" :key="index"  @click="$store.commit('GOLEFT', '/dynamicdetails/'+index)">
+        <div class="post-item" v-for="(item,index) in 15" :key="index">
           <div class="post-user">
-            <img src="http://p2.music.126.net/MHIswsnZuYdel2_roaLlYg==/109951164192558480.jpg?param=300x300">
+            <img :src="user.avatar">
             <div class="post-user-text">
-              <p>泡泡鱼{{index}}号</p>
+              <p>{{user.name}}</p>
             </div>
             <span>9/13 17:12</span>
           </div>
@@ -28,6 +26,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import User from '@/model/user'
 import ImgBox from '@/components/ImgBox.vue'
 
 @Component({
@@ -35,8 +34,10 @@ import ImgBox from '@/components/ImgBox.vue'
     ImgBox
   }
 })
-export default class Dynamic extends Vue {
+export default class UserHomePage extends Vue {
+  private user: User = this.$store.getters.user
   isLoading: boolean = false
+  isScroll: boolean = false
   onRefresh () {
     setTimeout(() => {
       this.$toast('刷新成功')
@@ -47,4 +48,5 @@ export default class Dynamic extends Vue {
 </script>
 
 <style lang="less" scoped>
+
 </style>

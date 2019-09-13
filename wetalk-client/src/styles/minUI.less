@@ -1,3 +1,5 @@
+@themeColr: #7232dd;
+
 .van-tabbar-item__icon .van-icon{
   font-size: 24px;
 }
@@ -30,31 +32,35 @@
 }
 
 .van-tabbar-item--active{
-  color: #5843a0;
+  color: @themeColr;
 }
 
 .van-tabbar-item__icon img{
   height: 24px;
 }
-.van-tabs--line .van-tabs__wrap{
-  height: 46px;
-  background: #5843a0;
-  .van-tabs__nav--line{
-    background: #5843a0;
-    .van-tab{
-      color: #fafafa;
-      font-size: 15px;
+.mess-wrap{
+  .van-tabs--line .van-tabs__wrap{
+    height: 46px;
+    background: @themeColr;
+    .van-tabs__nav--line{
+      background: @themeColr;
+      .van-tab{
+        color: #fafafa;
+        font-size: 15px;
+      }
     }
   }
-}
-.mess-wrap{
-  .van-tabs__nav--line{
-    width: 55%;
-    margin: 0 auto;
+  .van-tabs__content{
+    height: calc(100% - 95px);
+    padding-bottom: 45px;
   }
 }
 
-.van-tabs__content{
-  height: calc(100% - 95px);
-  padding-bottom: 45px;
+
+.litheme{
+  background: @themeColr;
+  color: #fff;
+  .van-nav-bar__title,.van-icon,.van-nav-bar__text{
+    color: #fefefe;
+  }
 }

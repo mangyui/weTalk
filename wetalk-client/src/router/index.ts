@@ -39,6 +39,16 @@ const router:Router = new Router({
       ]
     },
     {
+      path: '/postdetails/:id',
+      name: 'PostDetails',
+      component: () => import('@/views/lobby/Details.vue')
+    },
+    {
+      path: '/dynamicdetails/:id',
+      name: 'DynamicDetails',
+      component: () => import('@/views/dynamic/Details.vue')
+    },
+    {
       path: '/worldroom',
       name: 'WorldRoom',
       component: () => import('@/views/WorldRoom.vue')

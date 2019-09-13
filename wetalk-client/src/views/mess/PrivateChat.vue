@@ -3,13 +3,11 @@
     <div class="list-box">
       <div class="list-item" v-for="(item, index) in 15" :key="index">
         <img v-lazy="'http://p2.music.126.net/MHIswsnZuYdel2_roaLlYg==/109951164192558480.jpg?param=300x300'">
-        <div>
-          <div class="mess-right-l">
-            <b>二愣子{{index}}</b>
-            <p>在干嘛呢</p>
-          </div>
-          <span>2019/02/18</span>
+        <div class="mess-right-l">
+          <b>二愣子{{index}}</b>
+          <p>在干嘛呢</p>
         </div>
+        <span>2019/02/18</span>
       </div>
     </div>
   </div>
@@ -38,18 +36,16 @@ export default class PrivateChat extends Vue {
       height: 60px;
       border-radius: 50%;
     }
-    >div{
+    .mess-right-l{
       flex-grow: 1;
-      display: flex;
-      justify-content: space-between;
       padding: 10px 0px 20px 15px;
       border-bottom: 1px solid #f9f9f9;
-      font-size: 11px;
-      color: #888;
       p{
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        font-size: 11px;
+        color: #888;
       }
       b{
         display: block;
@@ -60,6 +56,10 @@ export default class PrivateChat extends Vue {
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+    }
+    span{
+      font-size: 11px;
+      color: #888;
     }
   }
 }

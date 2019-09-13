@@ -1,23 +1,34 @@
 <template>
   <div class="usercenter">
-    <van-nav-bar class="my-nav-bar" fixed title="我的主页" :border="false" left-arrow  @click-left="$store.commit('GOBACK')">
+    <van-nav-bar :class="isScroll?'litheme':'my-nav-bar'" fixed title="我的主页" :border="false" left-arrow  @click-left="$store.commit('GOBACK')">
       <van-icon name="edit" slot="right" @click="$store.commit('GOLEFT', '/UserEdit')"/>
     </van-nav-bar>
-    <div class="user-bg">
-      <div class="bg-mask" :style="{backgroundImage: 'url('+user.avatar+')'}"></div>
-      <div class="top-mask"></div>
-      <!-- <van-icon class="edit-btn" name="edit" size="26px" ></van-icon> -->
-      <van-icon class="re-btn" name="replay" size="26px" @click="refreshUser"></van-icon>
-    </div>
-    <div class="user-box max1100">
-      <img :src="user.avatar">
-      <div>
-        <b>{{user.name}}</b>
-        <p>{{user.sex==1?'男':'女'}} &nbsp;&nbsp;{{user.province}}&nbsp;&nbsp; {{user.city}}</p>
+    <div class="usercenter-top">
+      <div class="user-bg">
+        <div class="bg-mask" :style="{backgroundImage: 'url('+user.avatar+')'}"></div>
+        <div class="top-mask"></div>
+        <van-icon class="re-btn" name="replay" size="26px" @click="refreshUser"></van-icon>
+      </div>
+      <div class="user-box max1100">
+        <img :src="user.avatar">
+        <div>
+          <b>{{user.name}}</b>
+          <p>{{user.sex==1?'男':'女'}} &nbsp;&nbsp;{{user.province}}&nbsp;&nbsp; {{user.city}}</p>
+        </div>
       </div>
     </div>
-    <div class="my-info max1100">
-
+    <div class="max1100">
+      <van-tabs v-model="active" swipeable sticky :border="false" line-width="26" :offset-top="44">
+        <van-tab title="动态" name="dongtai">
+          <UserDynamic />
+        </van-tab>
+        <van-tab title="帖子" name="post">
+          <UserPost />
+        </van-tab>
+        <van-tab title="评论" name="comment">
+          <UserComment />
+        </van-tab>
+      </van-tabs>
     </div>
   </div>
 </template>
@@ -26,22 +37,53 @@
 import { Component, Vue } from 'vue-property-decorator'
 import User from '@/model/user'
 import Person from '@/util/Person'
+import UserPost from './UserPost.vue'
+import UserDynamic from './UserDynamic.vue'
+import UserComment from './UserComment.vue'
+
 let persons : Person[] = require('@/util/Persons').persons
 
-@Component
+@Component({
+  components: {
+    UserPost,
+    UserDynamic,
+    UserComment
+  }
+})
 export default class UserHomePage extends Vue {
   private user: User = this.$store.getters.user
+  isLoading: boolean = false
+  isScroll: boolean = false
+  active: string = 'm1'
+  onRefresh () {
+    setTimeout(() => {
+      this.$toast('刷新成功')
+      this.isLoading = false
+    }, 1000)
+  }
   refreshUser () {
     var index = Math.floor(Math.random() * persons.length)
     this.$store.commit('updateUserAvatar', persons[index].avatar)
     this.$store.commit('updateUserName', persons[index].name)
+  }
+  mounted () {
+    window.addEventListener('scroll', (e: any) => {
+      if (e.target.scrollTop > 100) {
+        this.isScroll = true
+      } else {
+        this.isScroll = false
+      }
+    }, true)
   }
 }
 </script>
 
 <style lang="less" scoped>
 .usercenter{
-  background: #f9f9f9;
+  .usercenter-top{
+    background: #fff;
+    padding-bottom: 15px;
+  }
 }
 .user-bg{
   width: 100%;

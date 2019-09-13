@@ -7,7 +7,8 @@ import {
   Search, PullRefresh, Toast,
   tag, Lazyload, Circle,
   ActionSheet, SwitchCell, Divider,
-  Tab, Tabs, ImagePreview
+  Tab, Tabs, ImagePreview,
+  Image
 } from 'vant'
 
 Vue.use(Button).use(Tabbar).use(TabbarItem)
@@ -18,3 +19,6 @@ Vue.use(Search).use(PullRefresh).use(Toast)
 Vue.use(tag).use(Lazyload).use(Circle)
 Vue.use(ActionSheet).use(SwitchCell).use(Divider)
 Vue.use(Tab).use(Tabs).use(ImagePreview)
+Vue.use(Image)
+
+Vue.prototype.$ImagePreview = ImagePreview

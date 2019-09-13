@@ -1,4 +1,6 @@
 @import './minUI.less';
+@import './postList.less';
+
 
 body, html {
   width: 100%;
@@ -23,6 +25,11 @@ ul{
   max-width: 1100px;
   margin: 0 auto;
 }
+
+.my-right{
+  text-align: right;
+}
+
 .content-wrap{
   margin-top: 46px;
 }
@@ -77,13 +84,6 @@ ul{
   } 
 }
 
-.litheme{
-  background: #5843a0;
-  color: #fff;
-  .van-nav-bar__title,.van-icon,.van-nav-bar__text{
-    color: #fefefe;
-  }
-}
 .liblue{
   background: linear-gradient(-45deg,#5460f1,#5bc5ff)!important;
 }
@@ -263,7 +263,7 @@ ul{
       right: 15px;
       bottom: 10px;
       z-index: 99;
-      color: #f44;
+      color: #fff;
     }
   }
   .my-info{

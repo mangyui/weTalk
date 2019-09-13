@@ -1,6 +1,6 @@
 <template>
   <div class="mess-wrap">
-    <van-tabs v-model="active" swipeable sticky line-width="26">
+    <van-tabs v-model="active" :border="false" swipeable sticky line-width="26">
       <van-tab title="聊天室" name="m1">
         <talkRoom />
       </van-tab>
@@ -34,7 +34,7 @@ export default class Message extends Vue {
   height: 100%;
   .van-tabs{
     height: 100%;
-    .van-tabs__nav--line{
+    /deep/ .van-tabs__nav--line{
       width: 55%;
       margin: 0 auto;
     }

@@ -1,0 +1,141 @@
+.post-box{
+  .post-item{
+    padding: 15px;
+    border-bottom: 8px solid #f8f8f8;
+    background: #fefefe;
+    .post-user{
+      display: flex;
+      align-items: center;
+      img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      .post-user-text{
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 15px;
+        color: #666;
+        span{
+          font-size: 11px;
+          color: #999;
+        }
+      }
+    }
+    .post-content{
+      p{
+        font-weight: bold;
+        width: 100%;
+        margin: 10px 0;
+        max-height: 100px;
+        overflow: hidden;
+        font-size: 15px;
+      }
+      p.p-max{
+        max-height: unset;
+      }
+      >img{
+        max-height: 240px;
+        border-radius: 5px;
+      }
+    }
+    .post-tag{
+      display: inline-block;
+      background: #e8e2ff;
+      border-radius: 100px;
+      padding: 7px 15px;
+      margin: 10px 0;
+      >div{
+        display: flex;
+        align-items: center;
+        width: auto;
+        span{
+          display: inline-block;
+          background: linear-gradient(45deg,#7232dd,#ac7cff);
+          color: #fff;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 20px;
+        }
+        p{
+          margin: 0 8px;
+        }
+        .van-icon{
+          font-size: 12px;
+        }
+      }
+
+    }
+    .post-san{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5px;
+      color: #444;
+      >div{
+        display: flex;
+        align-items: center;
+        .van-icon{
+          font-size: 26px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.dongtai-box .post-item{
+  .post-san{
+    justify-content: space-between;
+    margin-top: 15px;
+    div.post-san-right .van-icon{
+      margin-right: 0;
+      margin-left: 15px;
+    }
+  }
+  .post-user{
+    >span{
+      color: #888;
+      font-size: 11px;
+    }
+  }
+}
+
+.comment-box{
+  .post-item{
+    border-width: 2px;
+    .post-content{
+      padding-left: 55px;
+      .img9-box{
+        >div{
+          margin-right: 4px;
+          margin-top: 4px;
+          &:nth-child(3n){
+            margin-right: 0;
+          }
+        }
+        .van-image{
+          width: 94px;
+          height: 94px;
+        }
+      }
+    }
+  } 
+}
+
+.comment-right-icon{
+  display: flex;
+  align-items: center;
+  // background: #e8e2ff;
+  border: 1px solid #e8e2ff;
+  padding: 3px 5px 3px 5px;
+  width: 50px;
+  border-radius: 50px;
+  .van-icon{
+    font-size: 18px;
+    margin-right: 10px;
+  }
+}

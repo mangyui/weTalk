@@ -8,12 +8,10 @@
     />
     <div class="list-box">
       <div class="list-item" v-for="(item, index) in lists" :key="index">
+        <img :src="item.pic">
         <div class="list-item-left">
-          <img :src="item.pic">
-          <div>
-            <b>{{item.title}}</b>
-            <p>{{item.desc}}</p>
-          </div>
+          <b>{{item.title}}</b>
+          <p>{{item.desc}}</p>
         </div>
         <div class="list-item-right">
           <van-button size="small" @click="$store.commit('GOLEFT', item.url)">打开</van-button>
@@ -33,7 +31,7 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Games extends Vue {
   lists: Array<any> = [{
     title: 'Flappy Bird',
-    pic: 'http://img1.gamersky.com/image2014/09/20140920lyq_15/gamersky_01small_02_20149201413568.jpg',
+    pic: 'http://i5.72g.com/upload/201408/201408041006053007.JPG',
     desc: '像素鸟，穿越管道',
     url: {
       name: 'Web',

@@ -26,7 +26,7 @@
       </van-cell-group>
       <van-cell-group title="">
         <van-cell title="酷站" is-link icon="./icons/star.svg" @click="$store.commit('GOLEFT', '/other')"/>
-        <van-cell title="事务" is-link icon="./icons/list.svg" />
+        <!-- <van-cell title="事务" is-link icon="./icons/list.svg" /> -->
       </van-cell-group>
     </div>
   </div>
@@ -45,13 +45,13 @@ export default class UserCenter extends Vue {
 <style lang="less" scoped>
 .find-wrap{
   background: #f9f9f9;
-  padding-top: 46px;
+  padding-top: 44px;
   padding-bottom: 55px;
   overflow-y: auto;
 }
 .bgtheme{
-  background: #5843a0;
-  background: linear-gradient(to top,#382961,#5843a0)!important;
+  background: #7232dd;
+  background: linear-gradient(to top,#382961,#7232dd)!important;
 }
 .find-user{
   display: flex;

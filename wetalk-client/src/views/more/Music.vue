@@ -8,12 +8,10 @@
     />
     <div class="list-box">
       <div class="list-item" v-for="(item, index) in musics" :key="index" @click="toPlay(item)">
+        <img v-lazy="item.pic">
         <div class="list-item-left">
-          <img v-lazy="item.pic">
-          <div>
-            <b>{{item.title}}</b>
-            <p>{{item.author}}</p>
-          </div>
+          <b>{{item.title}}</b>
+          <p>{{item.author}}</p>
         </div>
         <div class="list-item-right">
           <div v-if="isPlay!=0&&currentSong.songid==item.songid">
