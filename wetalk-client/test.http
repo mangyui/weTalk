@@ -1,14 +1,13 @@
 
-@url=http://www.baidu.com
+@url=https://music.163.com/weapi/v3
 
 ### 1
 get {{url}}/blog
 
 ### 2
-post {{url}}/blog/getAll
+post https://music.163.com/weapi/search/hot
 Content-Type: application/json
 
 {
-  "name": "mangyu",
-  "number": 11
+  "type": 1111
 }

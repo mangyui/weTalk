@@ -15,6 +15,8 @@ import './api/get.js'
 import './api/post.js'
 
 import { Toast } from 'vant'
+// import MSTminxin from '@/util/MSTminxin'
+// Vue.mixin(MSTminxin)
 
 Vue.prototype.$win = window
 

@@ -18,15 +18,15 @@
       </div>
     </div>
     <div class="max1100">
-      <van-tabs v-model="active" swipeable sticky :border="false" line-width="26" :offset-top="44">
+      <van-tabs v-model="active" swipeable sticky :border="false" line-width="26" :offset-top="44" @change="tabChange">
         <van-tab title="动态" name="dongtai">
-          <UserDynamic />
+          <UserDynamic :user="user" />
         </van-tab>
         <van-tab title="帖子" name="post">
-          <UserPost />
+          <UserPost :user="user"/>
         </van-tab>
         <van-tab title="评论" name="comment">
-          <UserComment />
+          <UserComment :user="user"/>
         </van-tab>
       </van-tabs>
     </div>
@@ -54,12 +54,26 @@ export default class UserHomePage extends Vue {
   private user: User = this.$store.getters.user
   isLoading: boolean = false
   isScroll: boolean = false
-  active: string = 'm1'
+  active: string = 'dongtai'
+  oldActive: string = 'dongtai'
+  tabScrollList: any = {
+    dongtai: 165,
+    post: 165,
+    comment: 165
+  }
   onRefresh () {
     setTimeout(() => {
       this.$toast('刷新成功')
       this.isLoading = false
     }, 1000)
+  }
+  tabChange (name: string) {
+    let app: any = document.getElementById('app')
+    if (app.scrollTop >= 165) {
+      this.tabScrollList[this.oldActive] = app.scrollTop
+      app.scrollTop = this.tabScrollList[name]
+    }
+    this.oldActive = name
   }
   refreshUser () {
     var index = Math.floor(Math.random() * persons.length)
@@ -79,6 +93,9 @@ export default class UserHomePage extends Vue {
 </script>
 
 <style lang="less" scoped>
+.litheme{
+  z-index: 99!important;
+}
 .usercenter{
   .usercenter-top{
     background: #fff;

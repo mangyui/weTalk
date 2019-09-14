@@ -25,7 +25,7 @@ export default class ImgBox extends Vue {
   imgList: Array<any> = []
   created () {
     for (let i = 0; i < this.num; i++) {
-      this.imgList.push('http://img3.imgtn.bdimg.com/it/u=2626141675,3645652680&fm=26&gp=0.jpg')
+      this.imgList.push('https://img.zcool.cn/community/013a835d78c419a801211d53128042.jpg@260w_195h_1c_1e_1o_100sh.jpg')
     }
     if (this.imgList.length > 9) {
       this.imgList.splice(9)

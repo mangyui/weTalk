@@ -1,6 +1,6 @@
 <template>
   <div class="mess-wrap">
-    <van-tabs v-model="active" :border="false" swipeable sticky line-width="26">
+    <van-tabs v-model="active" :border="false" sticky line-width="26" :offset-top="0">
       <van-tab title="聊天室" name="m1">
         <talkRoom />
       </van-tab>

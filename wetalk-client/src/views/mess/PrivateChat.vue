@@ -1,14 +1,19 @@
 <template>
   <div class="max1100">
     <div class="list-box">
-      <div class="list-item" v-for="(item, index) in 15" :key="index">
-        <img v-lazy="'http://p2.music.126.net/MHIswsnZuYdel2_roaLlYg==/109951164192558480.jpg?param=300x300'">
-        <div class="mess-right-l">
-          <b>二愣子{{index}}</b>
-          <p>在干嘛呢</p>
+      <van-swipe-cell v-for="(item, index) in 15" :key="index">
+        <div class="list-item" >
+          <img v-lazy="'http://p2.music.126.net/MHIswsnZuYdel2_roaLlYg==/109951164192558480.jpg?param=300x300'">
+          <div class="mess-right-l">
+            <b>二愣子{{index}}</b>
+            <p>在干嘛呢</p>
+          </div>
+          <span>2019/02/18</span>
         </div>
-        <span>2019/02/18</span>
-      </div>
+        <template slot="right">
+          <van-button square type="danger" text="删除" />
+        </template>
+    </van-swipe-cell>
     </div>
   </div>
 </template>
@@ -27,10 +32,10 @@ export default class PrivateChat extends Vue {
 
 <style lang="less" scoped>
 .list-box{
-  padding: 5px 15px 45px;
+  padding: 5px 0px 45px;
   .list-item{
     display: flex;
-    padding: 15px 0 5px;
+    padding: 10px 15px 0;
     >img{
       width: 60px;
       height: 60px;

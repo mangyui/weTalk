@@ -1,6 +1,6 @@
 <template>
   <div class="bgMax max1100">
-    <van-nav-bar fixed title="base64转码" left-arrow
+    <van-nav-bar class="litheme" :border="false" fixed title="base64转码" left-arrow
       :right-text="isJie?'解码':'编码'"
       @click-left="$store.commit('GOBACK')"
       @click-right="showSetting=true">
@@ -76,7 +76,8 @@ export default class Base64 extends Vue {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #ddd;
-    resize:none
+    border-radius: 3px;
+    resize:none;
   }
   .base-btn{
     width: 100%;

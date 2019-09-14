@@ -29,11 +29,11 @@ router.beforeEach((to: Route, from: Route, next: any) => {
   }
 })
 
-// router.afterEach((to: Route, from: Route) => {
-//   setTimeout(() => {
-//     let app = document.getElementById('app')
-//     if (app) {
-//       app.scrollTo(0, 0)
-//     }
-//   }, 200)
-// })
+router.afterEach((to: Route, from: Route) => {
+  setTimeout(() => {
+    let app = document.getElementById('app')
+    if (app && to.name !== 'Lobby' && to.name !== 'Dynamic') {
+      app.scrollTo(0, 0)
+    }
+  }, 0)
+})

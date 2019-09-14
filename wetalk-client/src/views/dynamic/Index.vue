@@ -29,11 +29,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ImgBox from '@/components/ImgBox.vue'
+import MSTminxin from '@/util/MSTminxin'
 
 @Component({
   components: {
     ImgBox
-  }
+  },
+  mixins: [MSTminxin]
 })
 export default class Dynamic extends Vue {
   isLoading: boolean = false

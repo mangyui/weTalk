@@ -37,6 +37,7 @@
         </div>
         <van-icon name="arrow" />
       </div>
+      <div class="comment-line">评论</div>
       <div class="comment-box post-box">
         <div class="post-item" v-for="(item,index) in 15" :key="index">
           <div class="post-user">

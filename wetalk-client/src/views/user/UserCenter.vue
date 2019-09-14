@@ -13,7 +13,7 @@
     </div>
     <div class="my-info max1100">
       <!-- <van-cell-group title="">
-        <van-cell title="动态" is-link icon="/icons/星星.svg" />
+        <van-cell title="动态" is-link icon="./icons/星星.svg" />
       </van-cell-group> -->
       <van-cell-group title="">
         <van-cell title="天气" is-link icon="./icons/weather.svg" @click="$store.commit('GOLEFT', '/weather')"/>
@@ -50,8 +50,8 @@ export default class UserCenter extends Vue {
   overflow-y: auto;
 }
 .bgtheme{
-  background: #7232dd;
-  background: linear-gradient(to top,#382961,#7232dd)!important;
+  background: #8b81f9;
+  background: linear-gradient(to top,#9e7eff,#8b81f9)!important;
 }
 .find-user{
   display: flex;
@@ -68,13 +68,14 @@ export default class UserCenter extends Vue {
     margin-right: 20px;
     border: 1px solid #fff;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    transition: 0.28s;
   }
   .me-icon{
     position: absolute;
     right: 15px;
     bottom: 50%;
     transform: translateY(50%);
-    color: #999;
+    color: #ddd;
     font-size: 18px;
   }
   p{
@@ -93,7 +94,7 @@ export default class UserCenter extends Vue {
   }
   span{
     font-size: 12px;
-    color: #999;
+    color: #ddd;
   }
 }
 </style>

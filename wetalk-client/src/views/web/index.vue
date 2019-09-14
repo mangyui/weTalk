@@ -1,9 +1,12 @@
 <template>
   <div class="open_window">
+    <van-nav-bar class="litheme" :border="false" title="" fixed left-arrow  @click-left="$store.commit('GOBACK')">
+      <!-- <van-icon name="ellipsis" slot="right"/> -->
+    </van-nav-bar>
     <iframe :src="$route.params.url" frameborder="0"></iframe>
-    <div class="close-btn">
+    <!-- <div class="close-btn">
       <van-icon name="cross" color="#f8f8f8" @click="$store.commit('GOBACK')"/>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -30,6 +33,7 @@ export default class Applications extends Vue {
 .open_window{
   position: relative;
   font-size: 0;
+  padding-top: 44px;
   iframe{
     width: 100%;
     height: 100%;

@@ -25,6 +25,7 @@
           </div>
         </div>
       </div>
+      <div class="comment-line">评论</div>
       <div class="comment-box post-box">
         <div class="post-item" v-for="(item,index) in 15" :key="index">
           <div class="post-user">
@@ -33,10 +34,6 @@
               <p>沙雕</p>
               <span>9/13 21:46</span>
             </div>
-            <!-- <div class="comment-right-icon">
-              <van-icon name="good-job-o" />
-              <span>8</span>
-            </div> -->
           </div>
           <div class="post-content">
             <p>突然有一天西游记没经费了，于是师徒四人.....</p>

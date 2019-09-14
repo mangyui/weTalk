@@ -37,11 +37,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ImgBox from '@/components/ImgBox.vue'
+import MSTminxin from '@/util/MSTminxin'
 
 @Component({
   components: {
     ImgBox
-  }
+  },
+  mixins: [MSTminxin]
 })
 export default class Lobby extends Vue {
   isLoading: boolean = false
@@ -50,6 +52,8 @@ export default class Lobby extends Vue {
       this.$toast('刷新成功')
       this.isLoading = false
     }, 1000)
+  }
+  mounted () {
   }
 }
 </script>

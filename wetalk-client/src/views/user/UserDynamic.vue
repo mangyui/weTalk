@@ -2,7 +2,7 @@
   <div>
     <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
       <div class="post-box dongtai-box">
-        <div class="post-item" v-for="(item,index) in 15" :key="index">
+        <div class="post-item" v-for="(item,index) in 15" :key="index"  @click="$store.commit('GOLEFT', '/dynamicdetails/'+index)">
           <div class="post-user">
             <img :src="user.avatar">
             <div class="post-user-text">
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import User from '@/model/user'
 import ImgBox from '@/components/ImgBox.vue'
 
@@ -35,7 +35,7 @@ import ImgBox from '@/components/ImgBox.vue'
   }
 })
 export default class UserHomePage extends Vue {
-  private user: User = this.$store.getters.user
+  @Prop() user!: User
   isLoading: boolean = false
   isScroll: boolean = false
   onRefresh () {
