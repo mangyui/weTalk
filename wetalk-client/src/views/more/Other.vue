@@ -1,14 +1,13 @@
 <template>
   <div class="bgWhite max1100">
     <van-nav-bar class="litheme" :border="false" fixed title="酷站" left-arrow @click-left="$store.commit('GOBACK')" ></van-nav-bar>
-
     <div class="list-box">
-      <div class="list-item" v-for="(item, index) in lists" :key="index" @click="toIndex(index)">
+      <a class="list-item" :href="item.url" target="_blank" v-for="(item, index) in lists" :key="index">
         <div>
           <img :src="item.pic">
         </div>
         <p>{{item.title}}</p>
-      </div>
+      </a>
       <div v-show="lists.length%3==2" class="list-item"></div>
     </div>
     <van-divider>陆续添加中</van-divider>
@@ -28,11 +27,11 @@ export default class Other extends Vue {
   }
   lists: Array<any> = [{
     title: '作者博客',
-    pic: 'https://avatars3.githubusercontent.com/u/39995618?s=460&v=4',
+    pic: './imgs/myAvatar.jpg',
     url: 'https://mccyu.com/'
   }, {
     title: '作者Github',
-    pic: 'https://avatars3.githubusercontent.com/u/39995618?s=460&v=4',
+    pic: './imgs/myAvatar.jpg',
     url: 'https://github.com/mangyui'
   }, {
     title: '站酷',
@@ -41,11 +40,19 @@ export default class Other extends Vue {
   }, {
     title: '掘金内推',
     pic: 'https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg',
-    url: 'https://juejin.im/topic/'
+    url: 'https://juejin.im/topic/5abb61e1092dcb4620ca3322?sort=newest'
+  }, {
+    title: 'V2EX',
+    pic: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2808347187,4059917386&fm=26&gp=0.jpg',
+    url: 'https://www.v2ex.com/?tab=jobs'
   }, {
     title: '搜狗翻译',
     pic: 'https://dlweb.sogoucdn.com/translate/pc/static/img/logo@1x.dd6a432c.png',
     url: 'https://fanyi.sogou.com/'
+  }, {
+    title: '漫画斗破',
+    pic: 'https://www.zymk.cn/static/images/default/logo.png',
+    url: 'https://m.zymk.cn/1/'
   }]
   text: string = ''
   toIndex (index: number) {
@@ -68,6 +75,7 @@ export default class Other extends Vue {
   flex-wrap: wrap;
   justify-content: space-between;
   .list-item{
+    display: block;
     width: 90px;
     max-width: 30%;
     margin-bottom: 5px;
@@ -82,10 +90,11 @@ export default class Other extends Vue {
       overflow: hidden;
       margin-bottom: 5px;
       text-align: center;
-      background: #f9f9f9;
+      // background: radial-gradient(#dbd8ff, #a39cf9);
     }
     img{
       width: 100%;
+      background: #dbd8ff;
     }
     p{
       height: 40px;

@@ -36,6 +36,9 @@ export default class PrivateChat extends Vue {
   .list-item{
     display: flex;
     padding: 10px 15px 0;
+    &:active{
+      background-color: #ebe9ff;
+    }
     >img{
       width: 60px;
       height: 60px;
@@ -43,7 +46,7 @@ export default class PrivateChat extends Vue {
     }
     .mess-right-l{
       flex-grow: 1;
-      padding: 10px 0px 20px 15px;
+      padding: 10px 0px 17px 15px;
       border-bottom: 1px solid #f9f9f9;
       p{
         overflow: hidden;
@@ -56,7 +59,7 @@ export default class PrivateChat extends Vue {
         display: block;
         font-size: 15px;
         color: #111;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;

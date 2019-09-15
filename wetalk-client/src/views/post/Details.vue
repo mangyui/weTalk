@@ -1,9 +1,9 @@
 <template>
   <div class="bgMax max1100">
-    <van-nav-bar class="litheme" :border="false" title="帖子详情" fixed left-arrow  @click-left="$store.commit('GOBACK')">
-      <van-icon name="ellipsis" slot="right"/>
-    </van-nav-bar>
-    <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
+    <van-nav-bar class="litheme" :border="false" title="帖子详情" fixed left-arrow right-text="评论"
+      @click-left="$store.commit('GOBACK')"
+      @click-right="$store.commit('GOLEFT', '/postcomment/1')" />
+    <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh"  @click.native="isComment=false">
       <div class="post-box">
         <div class="post-item">
           <div class="post-user">
@@ -21,7 +21,7 @@
           <br />
           <div class="post-san">
             <div><van-icon name="share"/>15</div>
-            <div><van-icon name="chat-o" />15</div>
+            <div><van-icon name="comment-o" />15</div>
             <div><van-icon name="upgrade" />15</div>
           </div>
         </div>
@@ -29,7 +29,7 @@
       <div class="post-details-tag">
         <van-image
           fit="cover"
-          src="https://p3.ssl.qhimgs1.com/sdr/400__/t014b8f092184fe9f99.png"
+          src="https://img.zcool.cn/community/0104925d750033a801211d539d57f2.jpg@260w_195h_1c_1e_1o_100sh.jpg"
         />
         <div class="tag-right">
             <p># 沙雕俱乐部</p>
@@ -56,30 +56,37 @@
             <ImgBox :num="index" />
           </div>
           <div class="my-right">
-            <span class="comment-item-btn">评论</span>
+            <span class="comment-item-btn" @click.stop="isComment=true">评论Ta</span>
           </div>
         </div>
       </div>
     </van-pull-refresh>
+    <InputBox v-if="isComment" @toSend="toSend"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ImgBox from '@/components/ImgBox.vue'
+import InputBox from '@/components/InputBox.vue'
 
 @Component({
   components: {
-    ImgBox
+    ImgBox,
+    InputBox
   }
 })
 export default class PostDetails extends Vue {
   isLoading: boolean = false
+  isComment: boolean = false
   onRefresh () {
     setTimeout(() => {
       this.$toast('刷新成功')
       this.isLoading = false
     }, 1000)
+  }
+  toSend () {
+
   }
 }
 </script>

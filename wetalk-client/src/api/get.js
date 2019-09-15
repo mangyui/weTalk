@@ -19,6 +19,12 @@ const toGet = {
       method: 'get',
       params: datas
     })
+  },
+  getOtherWeb (datas) {
+    return request({
+      url: datas.web,
+      method: 'get'
+    })
   }
 }
 

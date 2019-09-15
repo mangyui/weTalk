@@ -19,7 +19,7 @@ const router:Router = new Router({
         {
           path: 'lobby',
           name: 'Lobby',
-          component: () => import('@/views/lobby/Index.vue')
+          component: () => import('@/views/post/Index.vue')
         },
         {
           path: 'dynamic',
@@ -39,14 +39,39 @@ const router:Router = new Router({
       ]
     },
     {
+      path: '/search',
+      name: 'Search',
+      component: () => import('@/views/home/Search.vue')
+    },
+    {
       path: '/postdetails/:id',
       name: 'PostDetails',
-      component: () => import('@/views/lobby/Details.vue')
+      component: () => import('@/views/post/Details.vue')
+    },
+    {
+      path: '/postcomment/:id',
+      name: 'PostComment',
+      component: () => import('@/views/post/Comment.vue')
+    },
+    {
+      path: '/postadd',
+      name: 'PostAdd',
+      component: () => import('@/views/post/Add.vue')
     },
     {
       path: '/dynamicdetails/:id',
       name: 'DynamicDetails',
       component: () => import('@/views/dynamic/Details.vue')
+    },
+    {
+      path: '/dynamiccomment/:id',
+      name: 'DynamicComment',
+      component: () => import('@/views/dynamic/Comment.vue')
+    },
+    {
+      path: '/dynamicadd',
+      name: 'DynamicAdd',
+      component: () => import('@/views/dynamic/Add.vue')
     },
     {
       path: '/worldroom',

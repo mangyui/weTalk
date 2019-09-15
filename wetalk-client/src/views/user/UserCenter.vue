@@ -51,7 +51,7 @@ export default class UserCenter extends Vue {
 }
 .bgtheme{
   background: #8b81f9;
-  background: linear-gradient(to top,#9e7eff,#8b81f9)!important;
+  background: linear-gradient(to top,#7678f2,#8b81f9)!important;
 }
 .find-user{
   display: flex;

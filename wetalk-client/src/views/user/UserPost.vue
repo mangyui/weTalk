@@ -21,7 +21,7 @@
           </b>
           <div class="post-san">
             <div><van-icon name="share"/>15</div>
-            <div><van-icon name="chat-o" />15</div>
+            <div><van-icon name="comment-o" />15</div>
             <div><van-icon name="upgrade" />15</div>
           </div>
         </div>

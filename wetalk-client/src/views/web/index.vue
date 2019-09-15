@@ -25,6 +25,7 @@ export default class Applications extends Vue {
   text: string = ''
   oldUrl: string = '/'
   created () {
+
   }
 }
 </script>

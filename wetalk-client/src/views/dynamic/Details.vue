@@ -1,13 +1,13 @@
 <template>
   <div class="bgMax max1100">
-    <van-nav-bar class="litheme" :border="false" title="动态详情" fixed left-arrow  @click-left="$store.commit('GOBACK')">
-      <van-icon name="ellipsis" slot="right"/>
-    </van-nav-bar>
-    <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
+    <van-nav-bar class="litheme" :border="false" title="动态详情" fixed left-arrow  right-text="评论"
+      @click-left="$store.commit('GOBACK')"
+      @click-right="$store.commit('GOLEFT', '/dynamiccomment/1')" />
+    <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh"  @click.native="isComment=false">
       <div class="dongtai-box post-box">
         <div class="post-item">
           <div class="post-user">
-            <img src="http://p2.music.126.net/MHIswsnZuYdel2_roaLlYg==/109951164192558480.jpg?param=300x300">
+            <img src="https://img.zcool.cn/community/0104925d750033a801211d539d57f2.jpg@260w_195h_1c_1e_1o_100sh.jpg">
             <div class="post-user-text">
               <p>沙雕</p>
               <span>9/13 21:46</span>
@@ -40,30 +40,37 @@
             <ImgBox :num="index" />
           </div>
           <div class="my-right">
-            <span class="comment-item-btn">回复</span>
+            <span class="comment-item-btn" @click.stop="isComment=true">回复</span>
           </div>
         </div>
       </div>
     </van-pull-refresh>
+    <InputBox v-if="isComment" @toSend="toSend"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ImgBox from '@/components/ImgBox.vue'
+import InputBox from '@/components/InputBox.vue'
 
 @Component({
   components: {
-    ImgBox
+    ImgBox,
+    InputBox
   }
 })
 export default class DynamicDetails extends Vue {
   isLoading: boolean = false
+  isComment: boolean = false
   onRefresh () {
     setTimeout(() => {
       this.$toast('刷新成功')
       this.isLoading = false
     }, 1000)
+  }
+  toSend () {
+
   }
 }
 </script>

@@ -17,9 +17,6 @@
             <p>突然有一天西游记没经费了，于是师徒四人.....</p>
             <ImgBox :num="index" />
           </div>
-          <div class="my-right">
-            <span class="comment-item-btn">评论</span>
-          </div>
         </div>
       </div>
     </van-pull-refresh>

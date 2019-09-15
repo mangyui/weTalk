@@ -1,6 +1,6 @@
 <template>
   <div class="bgMax">
-    <van-nav-bar fixed title="设置" left-arrow
+    <van-nav-bar class="litheme" :border="false" fixed title="设置" left-arrow
       @click-left="$store.commit('GOBACK')"></van-nav-bar>
     <div class="my-edit max1100">
       <van-cell-group>

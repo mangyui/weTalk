@@ -37,12 +37,6 @@ ul{
   margin-top: 46px;
 }
 
-.select-control-row{
-  .mu-radio-label{
-    margin-right: 30px;
-  }
-}
-
 #app,.home,.usercenter,.height100{
   height: 100%;
 }
@@ -60,6 +54,9 @@ ul{
 .bgWhite{
   background: #fff;
 }
+.pad15{
+  padding: 15px;
+}
 #app {
   // font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -76,15 +73,6 @@ ul{
       color: #42b983;
     }
   }
-}
-.barBadge{
-  margin-right: 15px;
-  margin-top: 5px;
-  .mu-badge{
-    width: 21px;
-    height: 21px;
-    top: -6px;
-  } 
 }
 
 .liblue{
@@ -109,20 +97,9 @@ ul{
 
 }
 
-.about{
-  .mu-bottom-nav-shift-wrapper{
-    justify-content: space-around;
-  }
-  .mu-paper-round{
-    height: calc(100% - 56px);
-  }
-}
 
 .talk-room{
   background: #f7f7f7;
-  .mu-paper-round{
-    background: #fafafa;
-  }
   .mess-box{
     text-align: left;
     padding: 0 10px 55px;
@@ -202,9 +179,6 @@ ul{
       padding-left: 40px;
       padding-right: 0px;
       .mess-item-right{
-        .mu-menu{
-          display: block;
-        }
         span{
           text-align: right
         }
@@ -223,36 +197,32 @@ ul{
       }
     }
   }
-  .talk-room{
-    .mu-paper-round{
-      height: calc(100% - 56px);
+}
+
+.talk-bottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  .talk-send{
+    display: flex;
+    padding: 5px 10px;
+    align-items: center;
+    background: #f0efff;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
+    textarea{
+      flex-grow: 1;
+      min-height: 26px;
+      max-height: 240px;
+      border: 1px solid #fff;
+      border-radius: 2px;
+      margin-right: 5px;
     }
-  }
-  .talk-bottom{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    .talk-send{
-      display: flex;
-      padding: 5px 10px;
-      align-items: center;
-      background: #f7f7f7;
-      box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
-      textarea{
-        flex-grow: 1;
-        min-height: 36px;
-        max-height: 240px;
-        border: 1px solid #fff;
-        border-radius: 2px;
-        margin-right: 5px;
-      }
-      .van-icon-smile-o{
-        margin: 0 5px;
-      }
-      .van-button{
-        height: 38px;
-        line-height: 36px;
-      }
+    .van-icon-smile-o{
+      margin: 0 5px;
+    }
+    .van-button{
+      height: 32px;
+      line-height: 30px;
     }
   }
 }
@@ -284,4 +254,36 @@ ul{
   background: #fff;
   padding: 15px;
   border-bottom: 1px solid #f8f8f8;
+}
+
+.home-add-icon{
+  background: #8b81f9;
+  background-image: linear-gradient(to top right, #8b81f9,#afa8ff);
+  box-shadow: 0 2px 5px #8b81f9;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: -8px;
+  position: relative;
+  z-index: 99;
+  opacity: 0.95;
+  margin-left: 10px;
+  margin-right: 10px;
+  i{
+    font-weight: bold;
+    font-size: 17px;
+  }
+}
+
+.fix-top{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
 }

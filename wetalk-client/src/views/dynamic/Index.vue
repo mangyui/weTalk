@@ -1,6 +1,8 @@
 <template>
   <div class="bgMax max1100">
-    <van-nav-bar class="litheme" :border="false" title="动态圈" fixed right-text="发动态">
+    <van-nav-bar class="litheme" :border="false" title="动态圈" fixed right-text="发动态"
+      @click-right="$store.commit('GOLEFT', '/dynamicadd')"
+    >
     </van-nav-bar>
     <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
       <div class="post-box dongtai-box">

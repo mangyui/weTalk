@@ -1,11 +1,11 @@
 <template>
   <div class="talk-room">
-    <van-nav-bar fixed :title="'世界频道(' + myTalk.numberP + ')'" left-arrow  @click-left="$store.commit('GOBACK')">
+    <van-nav-bar class="litheme" :border="false" fixed :title="'世界频道(' + myTalk.numberP + ')'" left-arrow  @click-left="$store.commit('GOBACK')">
       <van-icon name="weapp-nav" slot="right" />
     </van-nav-bar>
-    <div class="content-wrap">
+    <div class="content-wrap" @click="$refs.inputB.noMore()">
      <van-notice-bar
-        text="该聊天室内，所有都可见"
+        text="该聊天室内，所有人可见"
         left-icon="volume-o"
         mode="closeable"
       />
@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <InputBox @changeMore="changeMore" @toSend="toSend"></InputBox>
+    <InputBox ref="inputB" :isPic="true" @changeMore="changeMore" @toSend="toSend"></InputBox>
     <van-action-sheet
       v-model="showMore"
       :actions="actions"
@@ -53,13 +53,12 @@
 </template>
 
 <script lang="ts">
-// 😀 😃 😄 😁 😆 😅 😂 😊 😇 🙂 🙃 😉 😓 😪 😴 🙄 🤔 😬 🤐
 import Message from '../model/message'
 import User from '../model/user'
 import { Component, Vue } from 'vue-property-decorator'
 import { Getter } from 'vuex-class' // mapGetters 不适用
 import MyTalk from '@/util/MyTalk'
-import InputBox from '@/components/InputBox.vue' // 要写完整.vue
+import InputBox from '@/components/InputBox.vue'
 
 @Component({
   components: {
@@ -98,7 +97,7 @@ export default class WorldRoom extends Vue {
     this.timeOutEvent = setTimeout(() => {
       this.showMore = true
       this.mIndex = mIndex
-    }, 666)
+    }, 444)
   }
   gtouchend () {
     clearTimeout(this.timeOutEvent)

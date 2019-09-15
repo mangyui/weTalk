@@ -1,8 +1,7 @@
 <template>
   <div class="bgMax max1100">
     <van-nav-bar class="litheme" :border="false" title="大厅" fixed left-text="话题">
-      <van-icon name="search" slot="right"/>
-      <van-icon name="plus" slot="right" />
+      <van-icon name="search" slot="right"  @click="$store.commit('GOLEFT', '/search')"/>
     </van-nav-bar>
     <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
       <div class="post-box">
@@ -25,7 +24,7 @@
           </b>
           <div class="post-san">
             <div><van-icon name="share"/>15</div>
-            <div><van-icon name="chat-o" />15</div>
+            <div><van-icon name="comment-o" />15</div>
             <div><van-icon name="upgrade" />15</div>
           </div>
         </div>
