@@ -33,7 +33,6 @@ export default class Message extends Vue {
 .mess-wrap{
   height: 100%;
   .van-tabs{
-    height: 100%;
     /deep/ .van-tabs__nav--line{
       width: 55%;
       margin: 0 auto;

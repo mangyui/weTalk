@@ -7,7 +7,7 @@
           <b>13人</b>
           <img :src="require('@/assets/img/katong2.png')" alt="">
         </div>
-        <div :class="index%2==0?'room-card liblue':'room-card lired'" v-for="(item,index) in 4" :key="index">
+        <div :class="index%2==0?'room-card liblue':'room-card lired'" v-for="(item,index) in 2" :key="index">
           <p>聊天室{{index}}</p>
           <b>{{10+index}}人</b>
           <img :src="require('@/assets/img/katong'+index%2+'.png')" alt="">

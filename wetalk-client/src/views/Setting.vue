@@ -20,7 +20,7 @@
           </template>
         </van-cell>
       </van-cell-group>
-      <van-button class="max-btn" plain hairline type="danger">退出</van-button>
+      <van-button class="max-btn" plain hairline type="danger" @click="$store.commit('GOLEFT', '/login')">退出账号</van-button>
     </div>
   </div>
 </template>

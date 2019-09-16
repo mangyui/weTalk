@@ -12,7 +12,11 @@ body, html {
   padding: 0;
 }
 body{
-  font-family: Microsoft Yahei;
+  font-family: 
+  system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
+  Helvetica,Arial,
+  sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+  font-weight: 500;
 }
 p{
   margin: 0;
@@ -62,7 +66,6 @@ ul{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
-  font-weight: 400;
 }
 #nav {
   padding: 30px;
@@ -205,13 +208,13 @@ ul{
   width: 100%;
   .talk-send{
     display: flex;
-    padding: 5px 10px;
+    padding: 7px 10px;
     align-items: center;
     background: #f0efff;
     box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
     textarea{
       flex-grow: 1;
-      min-height: 26px;
+      min-height: 28px;
       max-height: 240px;
       border: 1px solid #fff;
       border-radius: 2px;
@@ -286,4 +289,13 @@ ul{
   left: 0;
   right: 0;
   top: 0;
+}
+
+.my-logo{
+  width: 120px;
+  height: 120px;
+  margin: 15px auto;
+  img{
+    width: 100%;
+  }
 }

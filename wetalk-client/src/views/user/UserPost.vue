@@ -52,7 +52,3 @@ export default class UserHomePage extends Vue {
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>

@@ -57,7 +57,7 @@ export default Vue.extend({
   right: 0;
   width: 100%;
   height: 100%;
-  transition: all .1s ease-in;
+  transition: all .1s ease-out;
   opacity: 1;
 }
 // .slideleft-enter,.slideright-enter {
