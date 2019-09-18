@@ -16,7 +16,7 @@
           </div>
           <b class="post-tag">
             <div>
-              <span>#</span><p>沙雕俱乐部</p><van-icon name="arrow" />
+              <span>#</span><p>沙雕俱乐部</p>
             </div>
           </b>
           <div class="post-san">

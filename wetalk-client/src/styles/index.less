@@ -36,7 +36,11 @@ ul{
 .my-right{
   text-align: right;
 }
-
+.flex-cc{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .content-wrap{
   margin-top: 46px;
 }
@@ -61,6 +65,15 @@ ul{
 .pad15{
   padding: 15px;
 }
+.fix-top{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 99
+}
+
 #app {
   // font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -282,20 +295,35 @@ ul{
     font-size: 17px;
   }
 }
-
-.fix-top{
-  position: fixed;
-  width: 100%;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
 .my-logo{
   width: 120px;
   height: 120px;
-  margin: 15px auto;
+  margin: 5px auto;
   img{
     width: 100%;
   }
+}
+
+.class-tag{
+  display: inline-block;
+  padding: 0 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.class-tag1{
+  background: rgba(100, 209, 182, 0.1);
+  color: rgb(100, 209, 182);
+}
+.class-tag2{
+  background: rgba(245, 127, 117, 0.1);
+  color:rgb(245, 127, 117);
+}
+.class-tag3{
+  background: rgba(161, 128, 115, 0.1);
+  color: rgb(161, 128, 115);
+}
+.class-tag4{
+  background: rgba(126, 140, 167, 0.1);
+  color: rgb(126, 140, 167);
 }

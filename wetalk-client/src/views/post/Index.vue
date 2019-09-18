@@ -1,6 +1,6 @@
 <template>
   <div class="bgMax max1100">
-    <van-nav-bar class="litheme" :border="false" title="大厅" fixed left-text="话题">
+    <van-nav-bar class="litheme" :border="false" title="大厅" fixed>
       <van-icon name="search" slot="right"  @click="$store.commit('GOLEFT', '/search')"/>
     </van-nav-bar>
     <van-pull-refresh pulling-text="下拉刷新" v-model="isLoading" @refresh="onRefresh">
@@ -19,7 +19,7 @@
           </div>
           <b class="post-tag">
             <div>
-              <span>#</span><p>沙雕俱乐部</p><van-icon name="arrow" />
+              <span>#</span><p>沙雕俱乐部</p>
             </div>
           </b>
           <div class="post-san">
@@ -58,5 +58,7 @@ export default class Lobby extends Vue {
 </script>
 
 <style lang="less" scoped>
-
+.post-box{
+  padding-bottom: 42px;
+}
 </style>

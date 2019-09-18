@@ -12,8 +12,8 @@
           :src="props.active ? './icons/home_a.svg' : './icons/home.svg'"
         >
       </van-tabbar-item>
-      <van-tabbar-item replace to="/home/dynamic"  @click="toTop(1)">
-        <span>动态</span>
+      <van-tabbar-item replace to="/home/refuseclass"  @click="toTop(1)">
+        <span>乐分</span>
         <img
           slot="icon"
           slot-scope="props"

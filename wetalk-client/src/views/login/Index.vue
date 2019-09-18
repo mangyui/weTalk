@@ -14,7 +14,7 @@
           <div class="login-item">
             <van-icon name="certificate" />
             <input placeholder="验证码" type="text">
-            <van-button size="small" color="#16cff0">发送验证码</van-button>
+            <van-button class="code-btn" size="small" color="#16cff0">发送验证码</van-button>
           </div>
         </div>
         <van-button class="max-btn"  color="#16cff0">登录</van-button>
@@ -53,7 +53,7 @@ export default class Login extends Vue {
 .login-wrap{
   max-width: 780px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 .login-box{
   padding: 20px;
@@ -97,5 +97,12 @@ export default class Login extends Vue {
       text-align: center;
     }
   }
+}
+.code-btn{
+  min-width: 78px;
+  padding: 0;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>

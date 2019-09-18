@@ -9,7 +9,7 @@ import {
   ActionSheet, SwitchCell, Divider,
   Tab, Tabs, ImagePreview,
   Image, SwipeCell, Uploader,
-  Dialog
+  Dialog, Sidebar, SidebarItem
 } from 'vant'
 
 Vue.use(Button).use(Tabbar).use(TabbarItem)
@@ -21,6 +21,6 @@ Vue.use(tag).use(Lazyload).use(Circle)
 Vue.use(ActionSheet).use(SwitchCell).use(Divider)
 Vue.use(Tab).use(Tabs).use(ImagePreview)
 Vue.use(Image).use(SwipeCell).use(Uploader)
-Vue.use(Dialog)
+Vue.use(Dialog).use(Sidebar).use(SidebarItem)
 
 Vue.prototype.$ImagePreview = ImagePreview

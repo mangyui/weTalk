@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/home/Index.vue'
 
 import Lobby from '@/views/post/Index.vue'
-import Dynamic from '@/views/dynamic/Index.vue'
+import RefuseClass from '@/views/refuseClass/Index.vue'
 import Message from '@/views/mess/Index.vue'
 import UserCenter from '@/views/user/UserCenter.vue'
 
@@ -12,9 +12,9 @@ import PostDetails from '@/views/post/Details.vue'
 import PostComment from '@/views/post/Comment.vue'
 import PostAdd from '@/views/post/Add.vue'
 
-import DynamicDetails from '@/views/dynamic/Details.vue'
-import DynamicComment from '@/views/dynamic/Comment.vue'
-import DynamicAdd from '@/views/dynamic/Add.vue'
+import GarbageImg from '@/views/refuseClass/Image.vue'
+// import DynamicComment from '@/views/dynamic/Comment.vue'
+import RefuseSearch from '@/views/refuseClass/Search.vue'
 import WorldRoom from '@/views/WorldRoom.vue'
 
 import UserHomePage from '@/views/user/UserHomePage.vue'
@@ -49,12 +49,12 @@ const router:Router = new Router({
         {
           path: 'lobby',
           name: 'Lobby',
-          component: () => import('@/views/post/Index.vue')
+          component: Lobby // () => import('@/views/post/Index.vue')
         },
         {
-          path: 'dynamic',
-          name: 'Dynamic',
-          component: Dynamic // () => import('@/views/dynamic/Index.vue')
+          path: 'refuseclass',
+          name: 'RefuseClass',
+          component: RefuseClass // () => import('@/views/refuseClass/Index.vue')
         },
         {
           path: 'message',
@@ -89,19 +89,19 @@ const router:Router = new Router({
       component: PostAdd // () => import('@/views/post/Add.vue')
     },
     {
-      path: '/dynamicdetails/:id',
-      name: 'DynamicDetails',
-      component: DynamicDetails // () => import('@/views/dynamic/Details.vue')
+      path: '/garbageimg',
+      name: 'GarbageImg',
+      component: GarbageImg // () => import('@/views/refuseClass/Image.vue')
     },
+    // {
+    //   path: '/dynamiccomment/:id',
+    //   name: 'DynamicComment',
+    //   component: DynamicComment // () => import('@/views/dynamic/Comment.vue')
+    // },
     {
-      path: '/dynamiccomment/:id',
-      name: 'DynamicComment',
-      component: DynamicComment // () => import('@/views/dynamic/Comment.vue')
-    },
-    {
-      path: '/dynamicadd',
-      name: 'DynamicAdd',
-      component: DynamicAdd // () => import('@/views/dynamic/Add.vue')
+      path: '/refusesearch',
+      name: 'RefuseSearch',
+      component: RefuseSearch // () => import('@/views/refuseClass/Search.vue')
     },
     {
       path: '/worldroom',

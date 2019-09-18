@@ -19,9 +19,6 @@
     </div>
     <div class="max1100">
       <van-tabs v-model="active" swipeable sticky :border="false" line-width="26" :offset-top="44" @change="tabChange">
-        <van-tab title="动态" name="dongtai">
-          <UserDynamic :user="user" />
-        </van-tab>
         <van-tab title="帖子" name="post">
           <UserPost :user="user"/>
         </van-tab>
@@ -38,7 +35,6 @@ import { Component, Vue } from 'vue-property-decorator'
 import User from '@/model/user'
 import Person from '@/util/Person'
 import UserPost from './UserPost.vue'
-import UserDynamic from './UserDynamic.vue'
 import UserComment from './UserComment.vue'
 
 let persons : Person[] = require('@/util/Persons').persons
@@ -46,7 +42,6 @@ let persons : Person[] = require('@/util/Persons').persons
 @Component({
   components: {
     UserPost,
-    UserDynamic,
     UserComment
   }
 })
@@ -54,10 +49,9 @@ export default class UserHomePage extends Vue {
   private user: User = this.$store.getters.user
   isLoading: boolean = false
   isScroll: boolean = false
-  active: string = 'dongtai'
-  oldActive: string = 'dongtai'
+  active: string = 'post'
+  oldActive: string = 'post'
   tabScrollList: any = {
-    dongtai: 165,
     post: 165,
     comment: 165
   }

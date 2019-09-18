@@ -28,20 +28,12 @@ function addonlySign (data) {
 }
 
 const toPost = {
-  // 获取商品列表
-  getRangeByCategory (datas) {
+  // 垃圾图片识别
+  garbageImg (datas) {
     return request({
-      url: baseUrl + '/?service=App.Commodity.GetRangeByCategory',
+      url: baseUrl + '/other/garbageImg',
       method: 'post',
-      data: qs.stringify(addSign(datas))
-    })
-  },
-  // 获取首页推荐
-  getHome (datas) {
-    return request({
-      url: baseUrl + '/?service=App.Commodity.GetIndex',
-      method: 'post',
-      data: qs.stringify(addSign(datas))
+      data: datas
     })
   }
 }

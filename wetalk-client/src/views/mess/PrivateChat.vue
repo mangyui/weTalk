@@ -32,7 +32,7 @@ export default class PrivateChat extends Vue {
 
 <style lang="less" scoped>
 .list-box{
-  padding: 5px 0px 45px;
+  padding: 0 0px 45px;
   .list-item{
     display: flex;
     padding: 10px 15px 0;

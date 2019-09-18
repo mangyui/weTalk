@@ -1,7 +1,7 @@
 import request from './request'
 import Vue from 'vue'
 
-const baseUrl = process.env.NODE_ENV === 'production' ? 'http://47.106.130.141:9612' : 'http://47.106.130.141:9612' // api的base_url
+const baseUrl = process.env.NODE_ENV === 'production' ? 'http://47.106.130.141:9612' : 'http://localhost:9612' // api的base_url
 
 const toGet = {
   // 天气
@@ -20,10 +20,20 @@ const toGet = {
       params: datas
     })
   },
-  getOtherWeb (datas) {
+  // 获取垃圾
+  getGarbage (datas) {
     return request({
-      url: datas.web,
-      method: 'get'
+      url: baseUrl + '/other/getGarbage',
+      method: 'get',
+      params: datas
+    })
+  },
+  // 获取垃圾
+  recentGs (datas) {
+    return request({
+      url: baseUrl + '/other/recentGs',
+      method: 'get',
+      params: datas
     })
   }
 }
